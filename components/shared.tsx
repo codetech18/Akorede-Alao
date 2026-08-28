@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { site, sections } from "@/lib/data";
+import { site } from "@/lib/data";
 import { ThemeToggle } from "./theme-toggle";
 
 /* ---------- scroll reveal ---------- */
@@ -122,66 +122,71 @@ export function Nav() {
   );
 }
 
-/* ---------- Lagos clock (UTC+1, no DST) ---------- */
-function useLagosTime() {
-  const [time, setTime] = useState("--:--");
+/* ---------- typing headline ---------- */
+function TypewriterHeading() {
+  const ref = useRef<HTMLHeadingElement | null>(null);
+  const [typed, setTyped] = useState(0);
+  const [armed, setArmed] = useState(false);
+  const pre = "Have a product that needs to ";
+  const em = "actually ship?";
+  const full = pre + em;
+
   useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      const lagos = new Date(
-        now.getTime() + now.getTimezoneOffset() * 60000 + 3600000,
-      );
-      const hh = String(lagos.getHours()).padStart(2, "0");
-      const mm = String(lagos.getMinutes()).padStart(2, "0");
-      setTime(`${hh}:${mm}`);
-    };
-    tick();
-    const id = setInterval(tick, 30_000);
-    return () => clearInterval(id);
-  }, []);
-  return time;
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setTyped(full.length);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => setArmed(true), 450);
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [full.length]);
+
+  useEffect(() => {
+    if (!armed || typed >= full.length) return;
+    const id = setTimeout(() => setTyped((t) => t + 1), 34);
+    return () => clearTimeout(id);
+  }, [armed, typed, full.length]);
+
+  const typedPre = pre.slice(0, Math.min(typed, pre.length));
+  const typedEm = em.slice(0, Math.max(0, typed - pre.length));
+  const done = typed >= full.length;
+
+  return (
+    <h2 ref={ref}>
+      <span aria-hidden="true">
+        {typedPre}
+        <em>{typedEm}</em>
+        <span className={`type-cursor${done ? " is-done" : ""}`} />
+      </span>
+      <span className="sr-only">{full}</span>
+    </h2>
+  );
 }
 
 /* ---------- colophon footer ---------- */
 export function Footer() {
-  const time = useLagosTime();
   const letters = site.name.toUpperCase().split("");
 
   return (
     <footer className="foot" id="contact">
       <div className="foot-top">
         <Reveal>
-          <h2>
-            Have a product that needs to <em>actually ship?</em>
-          </h2>
+          <TypewriterHeading />
           <a href={`mailto:${site.email}`} className="foot-mail">
             {site.email}
           </a>
-        </Reveal>
-        <Reveal className="foot-col">
-          <h4>Index</h4>
-          <ul>
-            {sections.map((s) => (
-              <li key={s.id}>
-                <Link href={`/#${s.id === "top" ? "" : s.id}`}>
-                  <span className="idx">{s.num}</span>
-                  {s.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-        <Reveal className="foot-col">
-          <h4>Colophon</h4>
-          <p className="foot-meta">
-            <span className="live">●</span> <b>Available for work</b>
-            <br />
-            Lagos · {time} WAT
-            <br />
-            {site.coords}
-            <br />
-            Next.js · deployed on Vercel
-          </p>
         </Reveal>
       </div>
 
@@ -196,7 +201,7 @@ export function Footer() {
       </div>
 
       <div className="baseline">
-        <span>© 2026 {site.name.toUpperCase()} · BUILT, NOT TEMPLATED</span>
+        <span>© 2026 {site.name.toUpperCase()}</span>
         <span className="soc">
           {site.socials.map((s) => (
             <a key={s.label} href={s.href} target="_blank" rel="noreferrer">

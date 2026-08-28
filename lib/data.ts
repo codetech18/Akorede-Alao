@@ -4,14 +4,11 @@
 
 export const site = {
   name: "Codetech",
-  role: "Full-stack engineer / builder",
   email: "akoredealao18@gmail.com",
-  location: "Lagos, Nigeria",
-  coords: "6.5244° N, 3.3792° E",
   url: "https://akorede.dev", // ← change to your real domain before launch
   availability: "Open for work · freelance & full-time",
-  nowShipping: { name: "Servrr", desc: "QR ordering for Lagos restaurants" },
-  building: { name: "StaffStack", desc: "HR & payroll for Nigerian SMBs" },
+  nowShipping: { name: "Servrr", desc: "QR ordering for restaurants" },
+  building: { name: "StaffStack", desc: "HR & payroll for SMBs" },
   cvPath: "/cv/akorede-alao-cv.pdf", // put the PDF at public/cv/
   socials: [
     { label: "X", href: "https://x.com/yourhandle" },
@@ -23,7 +20,7 @@ export const site = {
 
 export const hero = {
   headline: ["I build software real businesses ", "run on."],
-  lede: "Four years shipping real products. From my base in Lagos I've built restaurant ordering, market-trader inventory, and SaaS designed to survive contact with the street.",
+  lede: "Four years shipping real products — restaurant ordering, market-trader inventory, and SaaS designed to survive contact with the street.",
 };
 
 export const stats = [
@@ -35,28 +32,18 @@ export const stats = [
 
 export const about = {
   paragraphs: [
-    "I'm Akorede Alao, a full-stack software engineer with 4+ years of experience shipping production web and mobile software end to end. I'm currently a Software Engineer at Zashiron Org, full-time and remote, working across TypeScript, React, Next.js, and React Native, with LLM-powered features. Alongside that, I design, build, and run my own products — including Servrr, a live multi-tenant SaaS platform, and StockLog, inventory software built for Computer Village's phone dealers.",
+    "I'm Akorede Alao, a full-stack software engineer with 4+ years of experience shipping production web and mobile software end to end. I'm currently a Software Engineer at Zashiron Org, full-time and remote, working across TypeScript, React, Next.js, and React Native, with LLM-powered features. Alongside that, I design, build, and run my own products — including Servrr, a live multi-tenant SaaS platform, and StockLog, inventory software built for phone dealers.",
   ],
   pullquote:
-    "The products I build have to survive contact with the street, not just the demo.",
+    "Have to connect with the target audience outside the demo.",
   paragraphsAfter: [
-    "That constraint shapes everything: cash-first customers, patchy networks, staff who've never touched a dashboard. It's why Servrr uses permanent table tokens a waiter can control, and why StockLog mirrors how Computer Village dealers actually track stock instead of how inventory software assumes they should.",
+    "That constraint shapes everything: cash-first customers, patchy networks, staff who've never touched a dashboard. It's why Servrr uses permanent table tokens a waiter can control, and why StockLog mirrors how phone dealers actually track stock instead of how inventory software assumes they should.",
     "I own products end to end — positioning, architecture, design, code, and deployment — and bring the same discipline to team environments: four years across Zashiron, Dongmi Technologies, and ReadersPlug, shipping inside real codebases, deadlines, and constraints that weren't mine to set. I'm open to full-time roles, freelance work, and collaborations where that full loop matters.",
-  ],
-  facts: [
-    { label: "Based in", value: "Lagos, Nigeria (WAT)" },
-    { label: "Experience", value: "4+ years, full-stack" },
-    {
-      label: "Core stack",
-      value: "TypeScript, React, Next.js, React Native, Node, Firebase, Supabase",
-    },
-    { label: "Sweet spot", value: "Zero-to-one SaaS for real-world markets" },
   ],
 };
 
 export const skillsIntro = {
   title: "Skills",
-  desc: "Not a badge wall — the toolkit that actually shipped every product above, grouped by where it earns its keep.",
 };
 
 export type SkillGroup = { label: string; items: string[] };
@@ -84,7 +71,6 @@ export const skills: SkillGroup[] = [
 
 export const experienceIntro = {
   title: "Experience",
-  desc: "The employer-side half of the story — roles, teams, and what shipped inside them, alongside the products I build on my own.",
 };
 
 export type ExperienceRole = {
@@ -116,8 +102,8 @@ export const experience: ExperienceRole[] = [
   {
     company: "Dongmi Technologies",
     title: "Full-Stack Developer",
-    location: "Lagos, Nigeria",
-    type: "Hybrid",
+    location: "Hybrid",
+    type: "",
     period: "2024 – 2025",
     bullets: [
       "Built dynamic, type-safe interfaces with React and TypeScript, improving user retention by 15%.",
@@ -144,7 +130,7 @@ export const experience: ExperienceRole[] = [
 
 export const education = {
   degree: "Professional Diploma in Software Engineering",
-  place: "NIIT, Lagos, Nigeria",
+  place: "NIIT",
   period: "2019 – 2023",
 };
 
@@ -178,7 +164,7 @@ export const flagships: Flagship[] = [
     caseStudy: [
       {
         heading: "Problem",
-        body: "Lagos restaurants lose orders to paper chits and shouting across the floor. Existing QR systems assume app installs and card payments customers here don't do.",
+        body: "Restaurants lose orders to paper chits and shouting across the floor. Existing QR systems assume app installs and card payments customers here don't do.",
       },
       {
         heading: "Constraint",
@@ -190,7 +176,7 @@ export const flagships: Flagship[] = [
       },
       {
         heading: "Result",
-        body: "Multi-tenant SaaS live at servrr.ng with Growth and Pro tiers, onboarding real Lagos Mainland restaurants, full legal stack under Nigeria's Data Protection Act.",
+        body: "Multi-tenant SaaS live at servrr.ng with Growth and Pro tiers, onboarding real restaurants, full legal stack covering local data protection requirements.",
       },
     ],
     links: [
@@ -203,21 +189,21 @@ export const flagships: Flagship[] = [
       {
         heading: "Why this exists",
         paragraphs: [
-          "Walk into a busy restaurant on Lagos Mainland and watch how an order travels: a customer flags a waiter, the waiter scribbles on a chit or memorises it, shouts it to the kitchen, and hopes. Orders get lost, tables get the wrong food, and during rush hour the whole system runs on adrenaline.",
-          "QR ordering solves this everywhere else in the world, but the imported playbook fails here. It assumes customers will install an app, pay by card, and that the restaurant can print fresh QR codes per order. None of that matches how Lagos actually eats.",
+          "Walk into a busy restaurant and watch how an order travels: a customer flags a waiter, the waiter scribbles on a chit or memorises it, shouts it to the kitchen, and hopes. Orders get lost, tables get the wrong food, and during rush hour the whole system runs on adrenaline.",
+          "QR ordering solves this everywhere else in the world, but the imported playbook fails here. It assumes customers will install an app, pay by card, and that the restaurant can print fresh QR codes per order. None of that matches how people actually eat here.",
         ],
       },
       {
         heading: "The architecture decision that matters",
         paragraphs: [
           "The core problem was QR lifecycle. A printed code glued to a table lives for months, so it can't carry order state. Servrr separates identity from session: every table gets a permanent token, and staff open a session when guests sit down and close it when they leave. A scan outside an open session simply can't order, which kills ghost orders from stale codes and screenshots.",
-          "Everything is multi-tenant from the schema up: one deployment, many restaurants, each with its own menu, staff roles, and theming. Email delivery runs on Resend, the backend deploys on Render, and the legal layer (ToS, Privacy Policy, NDA) is drafted under Nigeria's Data Protection Act 2023.",
+          "Everything is multi-tenant from the schema up: one deployment, many restaurants, each with its own menu, staff roles, and theming. Email delivery runs on Resend, the backend deploys on Render, and the legal layer (ToS, Privacy Policy, NDA) is drafted under applicable data protection law.",
         ],
       },
       {
         heading: "What shipped",
         paragraphs: [
-          "Servrr is live at servrr.ng with Growth and Pro pricing tiers, and outreach is running across Lagos Mainland restaurants. It's a real product in a real market, being sold, not a portfolio piece wearing a SaaS costume.",
+          "Servrr is live at servrr.ng with Growth and Pro pricing tiers, and outreach is running across local restaurants. It's a real product in a real market, being sold, not a portfolio piece wearing a SaaS costume.",
         ],
       },
     ],
@@ -225,14 +211,14 @@ export const flagships: Flagship[] = [
   {
     slug: "foleman-electricals",
     title: "Foleman Electricals",
-    desc: "Cinematic two-page site for a Lagos electrical services company, built from a business card up — Three.js hero animation, GSAP scroll storytelling, a works page with video lightbox.",
+    desc: "Cinematic two-page site for an electrical services company, built from a business card up — Three.js hero animation, GSAP scroll storytelling, a works page with video lightbox.",
     video: "/videos/foleman-electricals.mp4",
     poster: "/posters/foleman-electricals.jpg",
     videoLabel: "Foleman Electricals · demo clip plays here",
     caseStudy: [
       {
         heading: "Problem",
-        body: "Foleman Electricals is a real, active electrical services company across Lagos and nationwide — but had zero web presence, just a business card. No way for commercial or industrial clients to verify them or see their work.",
+        body: "Foleman Electricals is a real, active electrical services company operating nationwide — but had zero web presence, just a business card. No way for commercial or industrial clients to verify them or see their work.",
       },
       {
         heading: "Constraint",
@@ -257,13 +243,13 @@ export const flagships: Flagship[] = [
       {
         heading: "Why this exists",
         paragraphs: [
-          "Foleman Electricals is a legitimate, active electrical services company operating across Lagos and nationwide — but their web presence was nonexistent. No website, just a business card. For a business trying to win commercial and industrial clients, that's a credibility gap: potential clients couldn't verify them, couldn't see their work, and had no professional touchpoint beyond word of mouth.",
+          "Foleman Electricals is a legitimate, active electrical services company operating nationwide — but their web presence was nonexistent. No website, just a business card. For a business trying to win commercial and industrial clients, that's a credibility gap: potential clients couldn't verify them, couldn't see their work, and had no professional touchpoint beyond word of mouth.",
         ],
       },
       {
         heading: "Building a brand from a business card",
         paragraphs: [
-          "The client is a tradesman, not a tech company — the site had to do the selling without any marketing copy, brand assets, or content strategy to start from. Everything had to be built from the business card up: brand identity, copywriting, visual direction, and the actual product. It also had to feel premium enough to compete for commercial contracts while still being accessible to residential clients in Lagos.",
+          "The client is a tradesman, not a tech company — the site had to do the selling without any marketing copy, brand assets, or content strategy to start from. Everything had to be built from the business card up: brand identity, copywriting, visual direction, and the actual product. It also had to feel premium enough to compete for commercial contracts while still being accessible to residential clients.",
           "The answer was a two-page cinematic website — a landing page and a dedicated portfolio/works page — with a dark editorial aesthetic inspired by architecture and luxury brand sites rather than typical tradesman templates. Three.js drives live electric-arc canvas animations in the hero, GSAP ScrollTrigger handles scroll-driven storytelling throughout, and Lenis provides smooth scroll integrated with GSAP's RAF loop. The works page uses an asymmetric editorial grid with local image and video assets, category filtering, and a video lightbox — built to feel like a portfolio agency site rather than a contractor listing.",
         ],
       },
@@ -278,14 +264,14 @@ export const flagships: Flagship[] = [
   {
     slug: "stocklog",
     title: "StockLog",
-    desc: "Inventory for phone and gadget dealers in Computer Village. Built around how they actually sell, not how software thinks they should.",
+    desc: "Inventory for phone and gadget dealers. Built around how they actually sell, not how software thinks they should.",
     video: undefined,
     poster: undefined,
     videoLabel: "StockLog · demo clip plays here",
     caseStudy: [
       {
         heading: "Problem",
-        body: "Phone and gadget dealers at Computer Village track fast-moving, high-value stock in notebooks and WhatsApp chats: no visibility, constant disputes.",
+        body: "Phone and gadget dealers track fast-moving, high-value stock in notebooks and WhatsApp chats: no visibility, constant disputes.",
       },
       {
         heading: "Constraint",
@@ -307,7 +293,7 @@ export const flagships: Flagship[] = [
       {
         heading: "Why this exists",
         paragraphs: [
-          "Computer Village moves an enormous volume of phones and gadgets every day, and most of it is tracked in notebooks and WhatsApp messages. Stock walks away, prices get disputed, and nobody can answer 'what do I actually have right now?' without counting.",
+          "The market moves an enormous volume of phones and gadgets every day, and most of it is tracked in notebooks and WhatsApp messages. Stock walks away, prices get disputed, and nobody can answer 'what do I actually have right now?' without counting.",
         ],
       },
       {
@@ -371,14 +357,14 @@ export const alsoShipped: AlsoShipped[] = [
   {
     title: "Bakery Support",
     desc: "B2B site for rotary oven manufacturing and bakery equipment setup services",
-    year: "2024",
+    year: "2023",
     href: "https://keen-maamoul-721e8e.netlify.app/",
     ghHref: "https://github.com/codetech18/BSS-website",
   },
   {
     title: "Educa.",
     desc: "EdTech course showcase with a streamlined student registration flow",
-    year: "2024",
+    year: "2023",
     href: "https://code-educa.netlify.app/",
     ghHref: "https://github.com/codetech18/school_website",
   },
@@ -460,7 +446,7 @@ export const notes: Note[] = [
       },
       {
         type: "p",
-        text: "Lagos does not work like that.",
+        text: "This market does not work like that.",
       },
       {
         type: "p",
@@ -540,7 +526,7 @@ export const notes: Note[] = [
       {
         type: "p",
         text:
-          "Naira pricing adds one more layer the playbooks never mention: inflation. A price that felt right in January can feel wrong by August — to you because your costs rose, to your customer because everything else in their life rose too. Annual plans are a harder sell when nobody wants to prepay in a currency that's moving, so the rhythm of the business stays monthly, which loops right back to renewal-as-conversation.",
+          "Local-currency pricing adds one more layer the playbooks never mention: inflation. A price that felt right in January can feel wrong by August — to you because your costs rose, to your customer because everything else in their life rose too. Annual plans are a harder sell when nobody wants to prepay in a currency that's moving, so the rhythm of the business stays monthly, which loops right back to renewal-as-conversation.",
       },
       {
         type: "h2",
@@ -567,7 +553,7 @@ export const notes: Note[] = [
       {
         type: "outro",
         text:
-          "*I'm building Servrr (QR ordering for restaurants) and StaffStack (HR & payroll for Nigerian SMBs) from Lagos. If you're building for markets like this one, my DMs are open.*",
+          "*I'm building Servrr (QR ordering for restaurants) and StaffStack (HR & payroll for SMBs). If you're building for markets like this one, my DMs are open.*",
       },
     ],
   },
@@ -594,7 +580,7 @@ export const notes: Note[] = [
       {
         type: "p",
         text:
-          "Then I looked at how a QR code actually lives in a Lagos restaurant, and the textbook fell apart.",
+          "Then I looked at how a QR code actually lives in a restaurant, and the textbook fell apart.",
       },
       {
         type: "p",
@@ -683,7 +669,7 @@ export const notes: Note[] = [
       {
         type: "p",
         text:
-          "Design for the artifact, not the abstraction. My first architecture was correct for a QR code that lives in a database. It was wrong for a QR code that lives under lamination on a table in Surulere. The second one is the real one.",
+          "Design for the artifact, not the abstraction. My first architecture was correct for a QR code that lives in a database. It was wrong for a QR code that lives under lamination on a table in a busy restaurant. The second one is the real one.",
       },
       {
         type: "p",
@@ -702,7 +688,7 @@ export const notes: Note[] = [
   },
   {
     slug: "shipping-to-lagos-restaurants",
-    title: "Shipping to Lagos restaurants: what the demo never shows you",
+    title: "Shipping to real restaurants: what the demo never shows you",
     readTime: "7 min",
     date: "2026-04-20",
     blocks: [
@@ -719,7 +705,7 @@ export const notes: Note[] = [
       {
         type: "p",
         text:
-          "This is what week two taught me, shipping Servrr into real Lagos restaurants.",
+          "This is what week two taught me, shipping Servrr into real restaurants.",
       },
       {
         type: "h2",
@@ -786,7 +772,7 @@ export const notes: Note[] = [
       {
         type: "p",
         text:
-          "You cannot fix Lagos infrastructure. You can decide how your product behaves when it wobbles. Which states are cached? Which actions queue and retry? What does the UI say when it's waiting — does it look broken, or does it look patient? A spinner with no words is read as \"it has spoiled.\" A short line of text — \"sending your order...\" — is read as \"it's working.\" Same delay, opposite outcome.",
+          "You cannot fix local infrastructure. You can decide how your product behaves when it wobbles. Which states are cached? Which actions queue and retry? What does the UI say when it's waiting — does it look broken, or does it look patient? A spinner with no words is read as \"it has spoiled.\" A short line of text — \"sending your order...\" — is read as \"it's working.\" Same delay, opposite outcome.",
       },
       {
         type: "p",
@@ -832,7 +818,7 @@ export const notes: Note[] = [
       {
         type: "p",
         text:
-          "After all of this, you'd think the lesson is \"Lagos is a hard market.\" That's not the lesson. Lagos is an *honest* market. It doesn't care about your stack, your design system, or your pitch. It asks one question, every single service, forever: does this make tonight easier?",
+          "After all of this, you'd think the lesson is \"this is a hard market.\" That's not the lesson. This is an *honest* market. It doesn't care about your stack, your design system, or your pitch. It asks one question, every single service, forever: does this make tonight easier?",
       },
       {
         type: "p",
@@ -849,7 +835,7 @@ export const notes: Note[] = [
       {
         type: "outro",
         text:
-          "*I write these notes from inside the products — Servrr, StockLog, StaffStack — as I build them from Lagos. The unglamorous parts are the whole story.*",
+          "*I write these notes from inside the products — Servrr, StockLog, StaffStack — as I build them. The unglamorous parts are the whole story.*",
       },
     ],
   },

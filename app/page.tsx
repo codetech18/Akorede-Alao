@@ -28,13 +28,6 @@ export default function Home() {
       <div className="shell wrap">
         <aside className="spine">
           <div className="spine-inner">
-            <span className="coord">
-              6.5244° N
-              <br />
-              3.3792° E
-              <br />
-              LAGOS, NG
-            </span>
             <ol>
               {sections.map((s) => (
                 <li key={s.id}>
@@ -53,9 +46,6 @@ export default function Home() {
             <Reveal className="avail">
               <span className="dot" />
               {site.availability}
-            </Reveal>
-            <Reveal as="p" className="eyebrow">
-              {site.role}
             </Reveal>
             <Reveal as="h1" className="h1">
               {hero.headline[0]}
@@ -123,14 +113,6 @@ export default function Home() {
                 <div className="portrait">
                   <img src="/korede.jpg" alt="Akorede Alao" />
                 </div>
-                <dl>
-                  {about.facts.map((f) => (
-                    <div key={f.label}>
-                      <dt>{f.label}</dt>
-                      <dd>{f.value}</dd>
-                    </div>
-                  ))}
-                </dl>
               </Reveal>
             </div>
           </section>
@@ -144,10 +126,6 @@ export default function Home() {
                 {skills.reduce((n, g) => n + g.items.length, 0)}+ tools
               </span>
             </Reveal>
-            <Reveal as="p" className="skills-intro">
-              {skillsIntro.desc}
-            </Reveal>
-
             <div className="skills-list">
               {skills.map((g, i) => (
                 <Reveal
@@ -180,10 +158,6 @@ export default function Home() {
               <h2>{experienceIntro.title}</h2>
               <span className="count">4+ years</span>
             </Reveal>
-            <Reveal as="p" className="exp-intro">
-              {experienceIntro.desc}
-            </Reveal>
-
             <div className="exp-list">
               {experience.map((role, i) => (
                 <Reveal
