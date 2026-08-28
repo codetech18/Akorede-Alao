@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { site, sections } from "@/lib/data";
+import { ThemeToggle } from "./theme-toggle";
 
 /* ---------- scroll reveal ---------- */
 export function Reveal({
@@ -49,20 +50,74 @@ export function Reveal({
 
 /* ---------- nav ---------- */
 export function Nav() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // close the drawer if the viewport grows back to desktop width
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 761px)");
+    const onChange = () => setOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   return (
     <nav className="nav">
-      <Link href="/" className="nav-logo display">
+      <Link href="/" className="nav-logo display" onClick={() => setOpen(false)}>
         Akorede<span>.</span>
       </Link>
       <div className="nav-links">
         <Link href="/#about">About</Link>
+        <Link href="/#experience">Experience</Link>
         <Link href="/#work">Work</Link>
         <Link href="/#notes">Notes</Link>
         <Link href="/#contact">Contact</Link>
       </div>
-      <Link href="/#contact" className="nav-hire">
-        Available for work →
-      </Link>
+      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <ThemeToggle />
+        <Link href="/#contact" className="nav-hire">
+          Available for work →
+        </Link>
+        <button
+          className={`nav-burger ${open ? "is-open" : ""}`}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      {open && (
+        <div className="nav-mobile-drawer">
+          <Link href="/#about" onClick={() => setOpen(false)}>
+            About
+          </Link>
+          <Link href="/#experience" onClick={() => setOpen(false)}>
+            Experience
+          </Link>
+          <Link href="/#work" onClick={() => setOpen(false)}>
+            Work
+          </Link>
+          <Link href="/#notes" onClick={() => setOpen(false)}>
+            Notes
+          </Link>
+          <Link href="/#contact" onClick={() => setOpen(false)}>
+            Contact
+          </Link>
+          <Link href="/#contact" className="nav-mobile-hire" onClick={() => setOpen(false)}>
+            Available for work →
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

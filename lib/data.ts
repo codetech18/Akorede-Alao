@@ -23,25 +23,25 @@ export const site = {
 
 export const hero = {
   headline: ["I build software real businesses ", "run on."],
-  lede: "Three years shipping real products. From my base in Lagos I've built restaurant ordering, market-trader inventory, and SaaS designed to survive contact with the street.",
+  lede: "Four years shipping real products. From my base in Lagos I've built restaurant ordering, market-trader inventory, and SaaS designed to survive contact with the street.",
 };
 
 export const stats = [
   { value: "07", accent: "+", label: "Products shipped" },
   { value: "02", accent: "", label: "SaaS running live" },
-  { value: "03", accent: "+", label: "Years full-stack" },
+  { value: "04", accent: "+", label: "Years full-stack" },
   { value: "Web", accent: "+Mobile", label: "End to end, both platforms" },
 ];
 
 export const about = {
   paragraphs: [
-    "I'm Akorede Alao, a full-stack engineer in Lagos. I started by building for people around me: a friend's electrical business, a cinematographer's portfolio, restaurants that were still taking orders on paper. Somewhere in there it stopped being favours and became the work itself.",
+    "I'm Akorede Alao, a full-stack software engineer with 4+ years of experience shipping production web and mobile software end to end. I'm currently a Software Engineer at Zashiron Org, full-time and remote, working across TypeScript, React, Next.js, and React Native, with LLM-powered features. Alongside that, I design, build, and run my own products — including Servrr, a live multi-tenant SaaS platform, and StockLog, inventory software built for Computer Village's phone dealers.",
   ],
   pullquote:
     "The products I build have to survive contact with the street, not just the demo.",
   paragraphsAfter: [
     "That constraint shapes everything: cash-first customers, patchy networks, staff who've never touched a dashboard. It's why Servrr uses permanent table tokens a waiter can control, and why StockLog mirrors how Computer Village dealers actually track stock instead of how inventory software assumes they should.",
-    "I own products end to end: positioning, architecture, design, code, deployment, and the follow-up DM to the first customer. Three years in, that full loop is the job I want, whether that's my own SaaS, your team, or your product.",
+    "I own products end to end — positioning, architecture, design, code, and deployment — and bring the same discipline to team environments: four years across Zashiron, Dongmi Technologies, and ReadersPlug, shipping inside real codebases, deadlines, and constraints that weren't mine to set. I'm open to full-time roles, freelance work, and collaborations where that full loop matters.",
   ],
   facts: [
     { label: "Based in", value: "Lagos, Nigeria (WAT)" },
@@ -54,6 +54,72 @@ export const about = {
   ],
 };
 
+export const experienceIntro = {
+  title: "Experience",
+  desc: "The employer-side half of the story — roles, teams, and what shipped inside them, alongside the products I build on my own.",
+};
+
+export type ExperienceRole = {
+  company: string;
+  title: string;
+  location: string;
+  type: string;
+  period: string;
+  current?: boolean;
+  bullets: string[];
+  stack?: string[];
+};
+
+export const experience: ExperienceRole[] = [
+  {
+    company: "Zashiron Org",
+    title: "Software Engineer",
+    location: "Remote",
+    type: "Full-time",
+    period: "Aug 2026 – Present",
+    current: true,
+    bullets: [
+      "Own frontend and API work on the core product.",
+      "Building with TypeScript, React, and Next.js, backed by Supabase (Postgres).",
+      "Integrating LLM-powered features into the product.",
+    ],
+    stack: ["TypeScript", "React", "Next.js", "SQL", "Supabase", "LLM integration"],
+  },
+  {
+    company: "Dongmi Technologies",
+    title: "Full-Stack Developer",
+    location: "Lagos, Nigeria",
+    type: "Hybrid",
+    period: "2024 – 2025",
+    bullets: [
+      "Built dynamic, type-safe interfaces with React and TypeScript, improving user retention by 15%.",
+      "Designed and implemented RESTful APIs with Node.js and Express.",
+      "Wrote unit and integration tests that reduced post-launch bugs by 30%.",
+      "Applied code splitting, lazy loading, and build optimisation via Webpack and Babel.",
+    ],
+    stack: ["React", "TypeScript", "Node.js", "Express"],
+  },
+  {
+    company: "ReadersPlug",
+    title: "Full-Stack Developer",
+    location: "Remote",
+    type: "",
+    period: "Sep 2021 – 2023",
+    bullets: [
+      "Rebuilt core application pages with React and Node.js, increasing engagement metrics by 30%.",
+      "Integrated optimised RESTful APIs with Express.js.",
+      "Reduced page load times by 40% through dynamic routing and backend query optimisation.",
+    ],
+    stack: ["React", "Node.js", "Express"],
+  },
+];
+
+export const education = {
+  degree: "Professional Diploma in Software Engineering",
+  place: "NIIT, Lagos, Nigeria",
+  period: "2019 – 2023",
+};
+
 export type CaseCell = { heading: string; body: string };
 
 export type Flagship = {
@@ -63,12 +129,14 @@ export type Flagship = {
   video?: string; // e.g. "/videos/servrr-demo.mp4"
   poster?: string; // e.g. "/posters/servrr.webp"
   videoLabel: string;
-  caseStudy: CaseCell[];
+  // Omit caseStudy/longform for a lighter entry: video + basic info, no
+  // Problem/Constraint/Decision/Result grid and no /work/[slug] page.
+  caseStudy?: CaseCell[];
   links: { label: string; href: string; external?: boolean }[];
   stack: string[];
   meta: { year: string; type: string; where: string };
   // Long-form content for the /work/[slug] page:
-  longform: { heading: string; paragraphs: string[] }[];
+  longform?: { heading: string; paragraphs: string[] }[];
 };
 
 export const flagships: Flagship[] = [
@@ -127,6 +195,59 @@ export const flagships: Flagship[] = [
     ],
   },
   {
+    slug: "foleman-electricals",
+    title: "Foleman Electricals",
+    desc: "Cinematic two-page site for a Lagos electrical services company, built from a business card up — Three.js hero animation, GSAP scroll storytelling, a works page with video lightbox.",
+    video: "/videos/foleman-electricals.mp4",
+    poster: "/posters/foleman-electricals.jpg",
+    videoLabel: "Foleman Electricals · demo clip plays here",
+    caseStudy: [
+      {
+        heading: "Problem",
+        body: "Foleman Electricals is a real, active electrical services company across Lagos and nationwide — but had zero web presence, just a business card. No way for commercial or industrial clients to verify them or see their work.",
+      },
+      {
+        heading: "Constraint",
+        body: "The client is a tradesman, not a tech company: no marketing copy, brand assets, or content strategy existed. Everything — brand identity, copywriting, visual direction — had to be built from the business card up, while still feeling premium enough for commercial contracts.",
+      },
+      {
+        heading: "Decision",
+        body: "Built a two-page cinematic site (landing + portfolio/works) with a dark editorial aesthetic closer to architecture and luxury-brand sites than a typical tradesman template — Three.js electric-arc hero animation, GSAP ScrollTrigger storytelling, Lenis smooth scroll, and an asymmetric works grid with video lightbox.",
+      },
+      {
+        heading: "Result",
+        body: "Shipped and live on Vercel, fully responsive across two pages. Gives Foleman Electricals a web presence that matches the quality of their actual work and positions them for larger commercial and industrial contracts.",
+      },
+    ],
+    links: [
+      { label: "Live · foleman-eletricals1.vercel.app ↗", href: "https://foleman-eletricals1.vercel.app/", external: true },
+      { label: "Full case study →", href: "/work/foleman-electricals" },
+    ],
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "GSAP", "Three.js"],
+    meta: { year: "2025", type: "Client site — Freelance", where: "foleman-eletricals1.vercel.app" },
+    longform: [
+      {
+        heading: "Why this exists",
+        paragraphs: [
+          "Foleman Electricals is a legitimate, active electrical services company operating across Lagos and nationwide — but their web presence was nonexistent. No website, just a business card. For a business trying to win commercial and industrial clients, that's a credibility gap: potential clients couldn't verify them, couldn't see their work, and had no professional touchpoint beyond word of mouth.",
+        ],
+      },
+      {
+        heading: "Building a brand from a business card",
+        paragraphs: [
+          "The client is a tradesman, not a tech company — the site had to do the selling without any marketing copy, brand assets, or content strategy to start from. Everything had to be built from the business card up: brand identity, copywriting, visual direction, and the actual product. It also had to feel premium enough to compete for commercial contracts while still being accessible to residential clients in Lagos.",
+          "The answer was a two-page cinematic website — a landing page and a dedicated portfolio/works page — with a dark editorial aesthetic inspired by architecture and luxury brand sites rather than typical tradesman templates. Three.js drives live electric-arc canvas animations in the hero, GSAP ScrollTrigger handles scroll-driven storytelling throughout, and Lenis provides smooth scroll integrated with GSAP's RAF loop. The works page uses an asymmetric editorial grid with local image and video assets, category filtering, and a video lightbox — built to feel like a portfolio agency site rather than a contractor listing.",
+        ],
+      },
+      {
+        heading: "What shipped",
+        paragraphs: [
+          "Foleman Electricals is live on Vercel across two fully responsive pages — home and works. It gives the business a professional web presence that matches the quality of their actual work, and positions them to compete for larger commercial and industrial contracts, not just word-of-mouth residential jobs.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "stocklog",
     title: "StockLog",
     desc: "Inventory for phone and gadget dealers in Computer Village. Built around how they actually sell, not how software thinks they should.",
@@ -175,9 +296,28 @@ export const flagships: Flagship[] = [
       },
     ],
   },
+  {
+    slug: "crediteasee",
+    title: "CreditEase",
+    desc: "Fintech landing page built from Figma, with a custom typewriter hook in TypeScript.",
+    video: "/videos/crediteasee.mp4",
+    poster: "/posters/crediteasee.jpg",
+    videoLabel: "CreditEase · demo clip plays here",
+    links: [{ label: "Live · crediteasee.netlify.app ↗", href: "https://crediteasee.netlify.app/", external: true }],
+    stack: ["React", "TypeScript"],
+    meta: { year: "2024", type: "Landing page", where: "crediteasee.netlify.app" },
+  },
 ];
 
-export const alsoShipped = [
+export type AlsoShipped = {
+  title: string;
+  desc: string;
+  year: string;
+  href?: string;
+  ghHref?: string;
+};
+
+export const alsoShipped: AlsoShipped[] = [
   {
     title: "LIV DOT Event Viewer",
     desc: "React Native event app with an 8-state live flow, built & shipped on Expo",
@@ -189,19 +329,30 @@ export const alsoShipped = [
     year: "2024",
   },
   {
-    title: "CreditEase",
-    desc: "Fintech landing built from Figma, custom typewriter hook in TypeScript",
-    year: "2024",
-  },
-  {
-    title: "Foleman Electricals",
-    desc: "Client site with GSAP, Three.js & Lenis, portfolio system, deployed",
-    year: "2024",
-  },
-  {
     title: "AssociateVisuals",
     desc: "Cinematographer portfolio, modernist minimal, GSAP & Cloudinary",
     year: "2026",
+  },
+  {
+    title: "Vestify.",
+    desc: "Crypto investment dashboard with real-time asset prices and market analysis",
+    year: "2024",
+    href: "https://vestify.netlify.app",
+    ghHref: "https://github.com/codetech18/crypto-site",
+  },
+  {
+    title: "Bakery Support",
+    desc: "B2B site for rotary oven manufacturing and bakery equipment setup services",
+    year: "2024",
+    href: "https://keen-maamoul-721e8e.netlify.app/",
+    ghHref: "https://github.com/codetech18/BSS-website",
+  },
+  {
+    title: "Educa.",
+    desc: "EdTech course showcase with a streamlined student registration flow",
+    year: "2024",
+    href: "https://code-educa.netlify.app/",
+    ghHref: "https://github.com/codetech18/school_website",
   },
 ];
 
@@ -216,6 +367,12 @@ export const testimonialsIntro = {
   title: "What people say",
   desc:
     "Four years of working inside real product teams leaves a trail. Here's what the people I built with have to say.",
+};
+
+export const notesIntro = {
+  title: "Field notes",
+  desc:
+    "Long-form writing from inside the products as I build them — real tradeoffs and what actually happened, not tutorials.",
 };
 
 export const testimonials: Testimonial[] = [
@@ -673,8 +830,9 @@ export const notes: Note[] = [
 export const sections = [
   { id: "top", num: "01", label: "Story" },
   { id: "about", num: "02", label: "About" },
-  { id: "work", num: "03", label: "Work" },
-  { id: "testimonials", num: "04", label: "Praise" },
+  { id: "experience", num: "03", label: "Experience" },
+  { id: "work", num: "04", label: "Work" },
   { id: "notes", num: "05", label: "Notes" },
-  { id: "contact", num: "06", label: "Contact" },
+  { id: "testimonials", num: "06", label: "Praise" },
+  { id: "contact", num: "07", label: "Contact" },
 ];

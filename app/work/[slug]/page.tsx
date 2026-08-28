@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { flagships } from "@/lib/data";
 import { Nav, Footer } from "@/components/shared";
+import { StockLogIllustration } from "@/components/stocklog-illustration";
 
 export function generateStaticParams() {
-  return flagships.map((f) => ({ slug: f.slug }));
+  return flagships.filter((f) => f.longform && f.longform.length > 0).map((f) => ({ slug: f.slug }));
 }
 
 export async function generateMetadata({
@@ -33,7 +34,7 @@ export default async function CaseStudyPage({
 }) {
   const { slug } = await params;
   const project = flagships.find((f) => f.slug === slug);
-  if (!project) notFound();
+  if (!project || !project.longform || project.longform.length === 0) notFound();
 
   return (
     <>
@@ -61,6 +62,10 @@ export default async function CaseStudyPage({
               poster={project.poster}
               src={project.video}
             />
+          ) : project.slug === "stocklog" ? (
+            <div className="ph ph-art">
+              <StockLogIllustration />
+            </div>
           ) : (
             <div className="ph">
               <span>{project.videoLabel}</span>
@@ -69,7 +74,7 @@ export default async function CaseStudyPage({
         </div>
 
         <div className="grid4">
-          {project.caseStudy.map((c) => (
+          {(project.caseStudy ?? []).map((c) => (
             <div key={c.heading}>
               <h4>{c.heading}</h4>
               <p>{c.body}</p>

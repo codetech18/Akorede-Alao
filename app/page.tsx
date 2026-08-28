@@ -5,14 +5,19 @@ import {
   hero,
   stats,
   about,
+  experienceIntro,
+  experience,
+  education,
   flagships,
   alsoShipped,
   testimonialsIntro,
   testimonials,
   notes,
+  notesIntro,
   sections,
 } from "@/lib/data";
 import { Reveal, Nav, Footer } from "@/components/shared";
+import { StockLogIllustration } from "@/components/stocklog-illustration";
 
 export default function Home() {
   return (
@@ -123,10 +128,64 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 03 WORK ---------- */}
-          <section className="sec" id="work">
+          {/* ---------- 03 EXPERIENCE ---------- */}
+          <section className="sec" id="experience">
             <Reveal className="sec-head">
               <span className="num">03</span>
+              <h2>{experienceIntro.title}</h2>
+              <span className="count">4+ years</span>
+            </Reveal>
+            <Reveal as="p" className="exp-intro">
+              {experienceIntro.desc}
+            </Reveal>
+
+            <div className="exp-list">
+              {experience.map((role) => (
+                <Reveal
+                  key={role.company}
+                  className={`exp-item ${role.current ? "is-current" : ""}`}
+                >
+                  <span className="exp-dot" />
+                  <div className="exp-head">
+                    <span className="exp-period mono">{role.period}</span>
+                    {role.current && <span className="exp-badge">Current</span>}
+                  </div>
+                  <h3 className="display exp-role">
+                    {role.title} <span className="exp-at">@ {role.company}</span>
+                  </h3>
+                  <div className="exp-meta mono">
+                    {role.type ? `${role.location} · ${role.type}` : role.location}
+                  </div>
+                  <ul className="exp-bullets">
+                    {role.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                  {role.stack && (
+                    <div className="exp-stack">
+                      {role.stack.map((s) => (
+                        <span className="chip" key={s}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </Reveal>
+              ))}
+
+              <Reveal className="exp-item exp-education">
+                <span className="exp-dot exp-dot-edu" />
+                <span className="exp-period mono">{education.period}</span>
+                <h3 className="display exp-role">{education.degree}</h3>
+                <div className="exp-meta mono">{education.place}</div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* ---------- 04 WORK ---------- */}
+          <section className="sec" id="work">
+            <Reveal className="sec-head">
+              <span className="num">04</span>
               <h2>Selected work</h2>
               <span className="count">7 shipped</span>
             </Reveal>
@@ -150,6 +209,10 @@ export default function Home() {
                         poster={f.poster}
                         src={f.video}
                       />
+                    ) : f.slug === "stocklog" ? (
+                      <div className="ph ph-art">
+                        <StockLogIllustration />
+                      </div>
                     ) : (
                       <div className="ph">
                         <span>{f.videoLabel}</span>
@@ -157,20 +220,22 @@ export default function Home() {
                     )}
                   </div>
 
-                  <details className="case">
-                    <summary>
-                      <span className="pl">+</span> Case study · how it was
-                      built
-                    </summary>
-                    <div className="case-body">
-                      {f.caseStudy.map((c) => (
-                        <div className="case-cell" key={c.heading}>
-                          <h4>{c.heading}</h4>
-                          <p>{c.body}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </details>
+                  {f.caseStudy && f.caseStudy.length > 0 && (
+                    <details className="case">
+                      <summary>
+                        <span className="pl">+</span> Case study · how it was
+                        built
+                      </summary>
+                      <div className="case-body">
+                        {f.caseStudy.map((c) => (
+                          <div className="case-cell" key={c.heading}>
+                            <h4>{c.heading}</h4>
+                            <p>{c.body}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </details>
+                  )}
 
                   <div className="links">
                     {f.links.map((l) =>
@@ -211,13 +276,30 @@ export default function Home() {
             ))}
 
             <Reveal className="subhead">Also shipped</Reveal>
-            {alsoShipped.map((p) => (
-              <Reveal as="a" className="mini" key={p.title}>
-                <h3 className="display">{p.title}</h3>
-                <p>{p.desc}</p>
-                <span className="yr">{p.year}</span>
-              </Reveal>
-            ))}
+            {alsoShipped.map((p) =>
+              p.href ? (
+                <Reveal
+                  as="a"
+                  href={p.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mini"
+                  key={p.title}
+                >
+                  <h3 className="display">
+                    {p.title} <span className="ext">↗</span>
+                  </h3>
+                  <p>{p.desc}</p>
+                  <span className="yr">{p.year}</span>
+                </Reveal>
+              ) : (
+                <Reveal as="div" className="mini" key={p.title}>
+                  <h3 className="display">{p.title}</h3>
+                  <p>{p.desc}</p>
+                  <span className="yr">{p.year}</span>
+                </Reveal>
+              ),
+            )}
 
             <Reveal className="building">
               <span className="dot" />
@@ -228,10 +310,53 @@ export default function Home() {
             </Reveal>
           </section>
 
-          {/* ---------- 04 TESTIMONIALS ---------- */}
+          {/* ---------- 05 NOTES ---------- */}
+          <section className="sec notes-sec" id="notes">
+            <Reveal className="sec-head">
+              <span className="num">05</span>
+              <h2>{notesIntro.title}</h2>
+              <span className="count">writing</span>
+            </Reveal>
+            <Reveal as="p" className="notes-intro">
+              {notesIntro.desc}
+            </Reveal>
+
+            <div className="notes-panel">
+              {notes.map((n, i) => {
+                const firstParagraph = n.blocks.find((b) => b.type === "p");
+                const excerpt =
+                  firstParagraph && "text" in firstParagraph
+                    ? firstParagraph.text.slice(0, 130).replace(/\*\*/g, "") +
+                      (firstParagraph.text.length > 130 ? "…" : "")
+                    : "";
+                return (
+                  <Reveal
+                    as={Link}
+                    href={`/notes/${n.slug}`}
+                    className="note-card"
+                    key={n.slug}
+                  >
+                    <span className="idx">N{String(i + 1).padStart(2, "0")}</span>
+                    <div className="note-card-body">
+                      <h3 className="display">{n.title}</h3>
+                      <p>{excerpt}</p>
+                      <div className="note-card-meta">
+                        <span>{n.readTime} read</span>
+                        <span className="note-card-cta">
+                          Read note <span className="arrow">→</span>
+                        </span>
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* ---------- 06 TESTIMONIALS ---------- */}
           <section className="sec" id="testimonials">
             <Reveal className="sec-head">
-              <span className="num">04</span>
+              <span className="num">06</span>
               <h2>{testimonialsIntro.title}</h2>
               <span className="count">from collaborators</span>
             </Reveal>
@@ -265,28 +390,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 05 NOTES ---------- */}
-          <section className="sec" id="notes">
-            <Reveal className="sec-head">
-              <span className="num">05</span>
-              <h2>Field notes</h2>
-              <span className="count">writing</span>
-            </Reveal>
-            {notes.map((n, i) => (
-              <Reveal
-                as={Link}
-                href={`/notes/${n.slug}`}
-                className="note-row"
-                key={n.slug}
-              >
-                <span className="idx">N{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="display">{n.title}</h3>
-                <span className="rt">{n.readTime}</span>
-              </Reveal>
-            ))}
-          </section>
-
-          {/* ---------- 06 CONTACT / COLOPHON ---------- */}
+          {/* ---------- 07 CONTACT / COLOPHON ---------- */}
           <Footer />
         </main>
       </div>
