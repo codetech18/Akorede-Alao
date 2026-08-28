@@ -1584,6 +1584,9 @@ video {
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
+  .testimonial-bubble {
+    min-height: 0;
+  }
   .work-row {
     grid-template-columns: 1fr;
   }

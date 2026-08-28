@@ -379,23 +379,23 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "Akorede does not just build screens. He listens for the real workflow, finds the risky edge cases early, and ships the version people can actually use under pressure.",
-    name: "Jeremiah Ekundayo",
-    role: "Backend Engineer, Serverly",
-    avatarSrc: "/avatars/jeremiah-ekundayo.png",
+    name: "Mr P",
+    role: "CEO, Dongmi Technologies",
+    avatarSrc: "/avatars/mr-p.png",
   },
   {
     quote:
       "Working with Akorede felt fast in the best way. He could move from product thinking to implementation without losing the details that make a system feel reliable.",
-    name: "Wisdom-Daniel",
-    role: "Frontend/Mobile Team Lead, Toraaah",
-    avatarSrc: "/avatars/wisdom-daniel.png",
+    name: "Mr Emmanuel",
+    role: "Foleman Electricals",
+    avatarSrc: "/avatars/mr-emmanuel.png",
   },
   {
     quote:
       "Akorede brought clarity to rough product ideas and turned them into flows our team could reason about. He collaborates closely, communicates well, and keeps momentum high.",
-    name: "Wonder-David Efe",
-    role: "Lead AI Engineer, Toraaah",
-    avatarSrc: "/avatars/wonder-david-efe.png",
+    name: "Mr Victor",
+    role: "Frontend Team Lead",
+    avatarSrc: "/avatars/mr-victor.png",
   },
 ];
 
