@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <div className="shell wrap" style={{ padding: 0, maxWidth: 1180, margin: "0 auto" }}>
+      <div className="shell wrap">
         <aside className="spine">
           <div className="spine-inner">
             <span className="coord">
@@ -45,7 +45,7 @@ export default function Home() {
           </div>
         </aside>
 
-        <main className="main" style={{ paddingRight: 28 }}>
+        <main className="main">
           {/* ---------- 01 STORY ---------- */}
           <section id="top">
             <Reveal className="avail">
@@ -82,17 +82,22 @@ export default function Home() {
               </span>
             </Reveal>
 
-            <Reveal className="stats">
-              {stats.map((s) => (
-                <div className="stat" key={s.label}>
+            <div className="stats">
+              {stats.map((s, i) => (
+                <Reveal
+                  as="div"
+                  className="stat"
+                  key={s.label}
+                  style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
+                >
                   <b>
                     {s.value}
                     {s.accent && <em>{s.accent}</em>}
                   </b>
                   <span>{s.label}</span>
-                </div>
+                </Reveal>
               ))}
-            </Reveal>
+            </div>
           </section>
 
           {/* ---------- 02 ABOUT ---------- */}
@@ -140,10 +145,11 @@ export default function Home() {
             </Reveal>
 
             <div className="exp-list">
-              {experience.map((role) => (
+              {experience.map((role, i) => (
                 <Reveal
                   key={role.company}
                   className={`exp-item ${role.current ? "is-current" : ""}`}
+                  style={{ "--reveal-delay": `${(i % 3) * 60}ms` } as CSSProperties}
                 >
                   <span className="exp-dot" />
                   <div className="exp-head">
@@ -276,8 +282,9 @@ export default function Home() {
             ))}
 
             <Reveal className="subhead">Also shipped</Reveal>
-            {alsoShipped.map((p) =>
-              p.href ? (
+            {alsoShipped.map((p, i) => {
+              const delay = { "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties;
+              return p.href ? (
                 <Reveal
                   as="a"
                   href={p.href}
@@ -285,6 +292,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="mini"
                   key={p.title}
+                  style={delay}
                 >
                   <h3 className="display">
                     {p.title} <span className="ext">↗</span>
@@ -293,13 +301,13 @@ export default function Home() {
                   <span className="yr">{p.year}</span>
                 </Reveal>
               ) : (
-                <Reveal as="div" className="mini" key={p.title}>
+                <Reveal as="div" className="mini" key={p.title} style={delay}>
                   <h3 className="display">{p.title}</h3>
                   <p>{p.desc}</p>
                   <span className="yr">{p.year}</span>
                 </Reveal>
-              ),
-            )}
+              );
+            })}
 
             <Reveal className="building">
               <span className="dot" />
@@ -335,6 +343,7 @@ export default function Home() {
                     href={`/notes/${n.slug}`}
                     className="note-card"
                     key={n.slug}
+                    style={{ "--reveal-delay": `${(i % 3) * 80}ms` } as CSSProperties}
                   >
                     <span className="idx">N{String(i + 1).padStart(2, "0")}</span>
                     <div className="note-card-body">

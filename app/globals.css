@@ -82,6 +82,7 @@ video {
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -90,6 +91,9 @@ video {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .reveal.in {
+    transition-delay: 0ms;
   }
 }
 
@@ -238,8 +242,11 @@ video {
 .spine-inner .n {
   color: var(--accent);
 }
+.shell.wrap {
+  padding: 0;
+}
 .main {
-  padding: 60px 0 100px 44px;
+  padding: 60px 28px 100px 44px;
   min-width: 0;
 }
 
@@ -1105,9 +1112,6 @@ video {
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
-.testimonial-card.in {
-  transition-delay: var(--reveal-delay);
-}
 .testimonial-bubble {
   position: relative;
   margin: 0;
@@ -1159,12 +1163,6 @@ video {
   line-height: 1.35;
   margin-top: 2px;
 }
-@media (prefers-reduced-motion: reduce) {
-  .testimonial-card.in {
-    transition-delay: 0ms;
-  }
-}
-
 /* ---------- notes ---------- */
 .note-row {
   display: flex;
@@ -1553,7 +1551,7 @@ video {
     display: none;
   }
   .main {
-    padding: 40px 0 70px;
+    padding: 40px 28px 70px;
   }
   .stats {
     grid-template-columns: repeat(2, 1fr);
