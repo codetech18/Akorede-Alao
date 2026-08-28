@@ -256,7 +256,11 @@ export default function Home() {
                           {l.label}
                         </a>
                       ) : (
-                        <Link key={l.label} href={l.href}>
+                        <Link
+                          key={l.label}
+                          href={l.href}
+                          className={l.href.startsWith("/work/") ? "case-link" : undefined}
+                        >
                           {l.label}
                         </Link>
                       ),

@@ -647,6 +647,7 @@ video {
 
 /* ---------- work: flagship rows ---------- */
 .work-row {
+  position: relative;
   border-bottom: 1px solid var(--line);
   padding: 30px 4px;
   display: grid;
@@ -657,6 +658,9 @@ video {
 }
 .work-row:hover {
   background: var(--panel);
+}
+.work-row:has(.case-link) {
+  cursor: pointer;
 }
 .work-title {
   font-family: var(--font-display);
@@ -946,6 +950,8 @@ video {
   overflow: hidden;
 }
 .case summary {
+  position: relative;
+  z-index: 2;
   list-style: none;
   cursor: pointer;
   display: flex;
@@ -977,6 +983,8 @@ video {
   transform: rotate(45deg);
 }
 .case-body {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   border-top: 1px solid var(--line);
@@ -1028,7 +1036,17 @@ video {
   border-color: var(--accent);
 }
 .links a.ext {
+  position: relative;
+  z-index: 2;
   color: var(--accent);
+}
+
+/* stretched link: click anywhere on the card to open the case study */
+.case-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 /* ---------- compact project index ---------- */

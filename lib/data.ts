@@ -76,7 +76,7 @@ export const experience: ExperienceRole[] = [
     title: "Software Engineer",
     location: "Remote",
     type: "Full-time",
-    period: "Aug 2026 – Present",
+    period: "2026 – Present",
     current: true,
     bullets: [
       "Own frontend and API work on the core product.",
