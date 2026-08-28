@@ -78,7 +78,7 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "AI & Tooling",
-    items: ["LLM integration", "Git", "Vite", "Webpack"],
+    items: ["LLM", "Integration", "Git", "Vite", "Webpack"],
   },
 ];
 
@@ -172,8 +172,8 @@ export const flagships: Flagship[] = [
     slug: "servrr",
     title: "Servrr",
     desc: "QR-code ordering for restaurants. One scan, no app to install, table sessions staff open and close. Built multi-tenant from the ground up.",
-    video: undefined, // set to "/videos/servrr-demo.mp4" when the clip is ready
-    poster: undefined,
+    video: "/videos/servrr.mp4",
+    poster: "/posters/servrr.jpg",
     videoLabel: "Servrr · demo clip plays here",
     caseStudy: [
       {
