@@ -54,6 +54,34 @@ export const about = {
   ],
 };
 
+export const skillsIntro = {
+  title: "Skills",
+  desc: "Not a badge wall — the toolkit that actually shipped every product above, grouped by where it earns its keep.",
+};
+
+export type SkillGroup = { label: string; items: string[] };
+
+export const skills: SkillGroup[] = [
+  { label: "Languages", items: ["TypeScript", "JavaScript", "SQL"] },
+  {
+    label: "Frontend",
+    items: ["React", "Next.js", "Tailwind CSS", "GSAP", "Three.js"],
+  },
+  { label: "Mobile", items: ["React Native", "Expo"] },
+  {
+    label: "Backend",
+    items: ["Node.js", "Express", "REST APIs", "PostgreSQL"],
+  },
+  {
+    label: "Platforms",
+    items: ["Supabase", "Firebase", "Vercel", "Render", "Resend"],
+  },
+  {
+    label: "AI & Tooling",
+    items: ["LLM integration", "Git", "Vite", "Webpack"],
+  },
+];
+
 export const experienceIntro = {
   title: "Experience",
   desc: "The employer-side half of the story — roles, teams, and what shipped inside them, alongside the products I build on my own.",
@@ -830,9 +858,10 @@ export const notes: Note[] = [
 export const sections = [
   { id: "top", num: "01", label: "Story" },
   { id: "about", num: "02", label: "About" },
-  { id: "experience", num: "03", label: "Experience" },
-  { id: "work", num: "04", label: "Work" },
-  { id: "notes", num: "05", label: "Notes" },
-  { id: "testimonials", num: "06", label: "Praise" },
-  { id: "contact", num: "07", label: "Contact" },
+  { id: "skills", num: "03", label: "Skills" },
+  { id: "experience", num: "04", label: "Experience" },
+  { id: "work", num: "05", label: "Work" },
+  { id: "notes", num: "06", label: "Notes" },
+  { id: "testimonials", num: "07", label: "Praise" },
+  { id: "contact", num: "08", label: "Contact" },
 ];

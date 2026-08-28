@@ -5,6 +5,8 @@ import {
   hero,
   stats,
   about,
+  skillsIntro,
+  skills,
   experienceIntro,
   experience,
   education,
@@ -133,10 +135,48 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 03 EXPERIENCE ---------- */}
-          <section className="sec" id="experience">
+          {/* ---------- 03 SKILLS ---------- */}
+          <section className="sec" id="skills">
             <Reveal className="sec-head">
               <span className="num">03</span>
+              <h2>{skillsIntro.title}</h2>
+              <span className="count">
+                {skills.reduce((n, g) => n + g.items.length, 0)}+ tools
+              </span>
+            </Reveal>
+            <Reveal as="p" className="skills-intro">
+              {skillsIntro.desc}
+            </Reveal>
+
+            <div className="skills-list">
+              {skills.map((g, i) => (
+                <Reveal
+                  className="skill-row"
+                  key={g.label}
+                  style={{ "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties}
+                >
+                  <div className="skill-row-head">
+                    <span className="skill-index mono">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="display">{g.label}</h3>
+                  </div>
+                  <div className="skill-row-items">
+                    {g.items.map((item) => (
+                      <span className="skill-item" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* ---------- 04 EXPERIENCE ---------- */}
+          <section className="sec" id="experience">
+            <Reveal className="sec-head">
+              <span className="num">04</span>
               <h2>{experienceIntro.title}</h2>
               <span className="count">4+ years</span>
             </Reveal>
@@ -188,10 +228,10 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 04 WORK ---------- */}
+          {/* ---------- 05 WORK ---------- */}
           <section className="sec" id="work">
             <Reveal className="sec-head">
-              <span className="num">04</span>
+              <span className="num">05</span>
               <h2>Selected work</h2>
               <span className="count">7 shipped</span>
             </Reveal>
@@ -322,10 +362,10 @@ export default function Home() {
             </Reveal>
           </section>
 
-          {/* ---------- 05 NOTES ---------- */}
+          {/* ---------- 06 NOTES ---------- */}
           <section className="sec notes-sec" id="notes">
             <Reveal className="sec-head">
-              <span className="num">05</span>
+              <span className="num">06</span>
               <h2>{notesIntro.title}</h2>
               <span className="count">writing</span>
             </Reveal>
@@ -366,10 +406,10 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 06 TESTIMONIALS ---------- */}
+          {/* ---------- 07 TESTIMONIALS ---------- */}
           <section className="sec" id="testimonials">
             <Reveal className="sec-head">
-              <span className="num">06</span>
+              <span className="num">07</span>
               <h2>{testimonialsIntro.title}</h2>
               <span className="count">from collaborators</span>
             </Reveal>
@@ -403,7 +443,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 07 CONTACT / COLOPHON ---------- */}
+          {/* ---------- 08 CONTACT / COLOPHON ---------- */}
           <Footer />
         </main>
       </div>
