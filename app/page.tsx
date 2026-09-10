@@ -4,7 +4,6 @@ import {
   site,
   hero,
   stats,
-  about,
   skillsIntro,
   skills,
   experienceIntro,
@@ -58,8 +57,8 @@ export default function Home() {
               <a href="#work" className="btn btn-solid">
                 See the work
               </a>
-              <a href="#contact" className="btn btn-ghost">
-                Work with me
+              <a href="/about" className="btn btn-ghost">
+                About me
               </a>
               <a href={site.cvPath} className="btn btn-ghost" download>
                 ↓ CV (PDF)
@@ -92,31 +91,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 02 ABOUT ---------- */}
-          <section className="sec" id="about">
-            <Reveal className="sec-head">
-              <span className="num">02</span>
-              <h2>About</h2>
-              <span className="count">the builder</span>
-            </Reveal>
-            <div className="about">
-              <Reveal className="bio">
-                {about.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-                <p className="pull">{about.pullquote}</p>
-                {about.paragraphsAfter.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </Reveal>
-              <Reveal as="aside" className="facts">
-                <div className="portrait">
-                  <img src="/korede.jpg" alt="Akorede Alao" />
-                </div>
-              </Reveal>
-            </div>
-          </section>
-
           {/* ---------- 03 SKILLS ---------- */}
           <section className="sec" id="skills">
             <Reveal className="sec-head">
@@ -131,7 +105,9 @@ export default function Home() {
                 <Reveal
                   className="skill-row"
                   key={g.label}
-                  style={{ "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties}
+                  style={
+                    { "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties
+                  }
                 >
                   <div className="skill-row-head">
                     <span className="skill-index mono">
@@ -163,7 +139,9 @@ export default function Home() {
                 <Reveal
                   key={role.company}
                   className={`exp-item ${role.current ? "is-current" : ""}`}
-                  style={{ "--reveal-delay": `${(i % 3) * 60}ms` } as CSSProperties}
+                  style={
+                    { "--reveal-delay": `${(i % 3) * 60}ms` } as CSSProperties
+                  }
                 >
                   <span className="exp-dot" />
                   <div className="exp-head">
@@ -171,10 +149,13 @@ export default function Home() {
                     {role.current && <span className="exp-badge">Current</span>}
                   </div>
                   <h3 className="display exp-role">
-                    {role.title} <span className="exp-at">@ {role.company}</span>
+                    {role.title}{" "}
+                    <span className="exp-at">@ {role.company}</span>
                   </h3>
                   <div className="exp-meta mono">
-                    {role.type ? `${role.location} · ${role.type}` : role.location}
+                    {role.type
+                      ? `${role.location} · ${role.type}`
+                      : role.location}
                   </div>
                   <ul className="exp-bullets">
                     {role.bullets.map((b) => (
@@ -202,10 +183,10 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 05 WORK ---------- */}
+          {/* ---------- 02 WORK ---------- */}
           <section className="sec" id="work">
             <Reveal className="sec-head">
-              <span className="num">05</span>
+              <span className="num">02</span>
               <h2>Selected work</h2>
               <span className="count">7 shipped</span>
             </Reveal>
@@ -273,7 +254,11 @@ export default function Home() {
                         <Link
                           key={l.label}
                           href={l.href}
-                          className={l.href.startsWith("/work/") ? "case-link" : undefined}
+                          className={
+                            l.href.startsWith("/work/")
+                              ? "case-link"
+                              : undefined
+                          }
                         >
                           {l.label}
                         </Link>
@@ -301,7 +286,9 @@ export default function Home() {
 
             <Reveal className="subhead">Also shipped</Reveal>
             {alsoShipped.map((p, i) => {
-              const delay = { "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties;
+              const delay = {
+                "--reveal-delay": `${(i % 4) * 60}ms`,
+              } as CSSProperties;
               return p.href ? (
                 <Reveal
                   as="a"
@@ -336,10 +323,10 @@ export default function Home() {
             </Reveal>
           </section>
 
-          {/* ---------- 06 NOTES ---------- */}
+          {/* ---------- 05 NOTES ---------- */}
           <section className="sec notes-sec" id="notes">
             <Reveal className="sec-head">
-              <span className="num">06</span>
+              <span className="num">05</span>
               <h2>{notesIntro.title}</h2>
               <span className="count">writing</span>
             </Reveal>
@@ -361,9 +348,13 @@ export default function Home() {
                     href={`/notes/${n.slug}`}
                     className="note-card"
                     key={n.slug}
-                    style={{ "--reveal-delay": `${(i % 3) * 80}ms` } as CSSProperties}
+                    style={
+                      { "--reveal-delay": `${(i % 3) * 80}ms` } as CSSProperties
+                    }
                   >
-                    <span className="idx">N{String(i + 1).padStart(2, "0")}</span>
+                    <span className="idx">
+                      N{String(i + 1).padStart(2, "0")}
+                    </span>
                     <div className="note-card-body">
                       <h3 className="display">{n.title}</h3>
                       <p>{excerpt}</p>
@@ -380,10 +371,10 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 07 TESTIMONIALS ---------- */}
+          {/* ---------- 06 TESTIMONIALS ---------- */}
           <section className="sec" id="testimonials">
             <Reveal className="sec-head">
-              <span className="num">07</span>
+              <span className="num">06</span>
               <h2>{testimonialsIntro.title}</h2>
               <span className="count">from collaborators</span>
             </Reveal>
@@ -417,7 +408,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 08 CONTACT / COLOPHON ---------- */}
+          {/* ---------- 07 CONTACT / COLOPHON ---------- */}
           <Footer />
         </main>
       </div>

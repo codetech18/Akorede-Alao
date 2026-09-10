@@ -843,11 +843,10 @@ export const notes: Note[] = [
 
 export const sections = [
   { id: "top", num: "01", label: "Story" },
-  { id: "about", num: "02", label: "About" },
+  { id: "work", num: "02", label: "Work" },
   { id: "skills", num: "03", label: "Skills" },
   { id: "experience", num: "04", label: "Experience" },
-  { id: "work", num: "05", label: "Work" },
-  { id: "notes", num: "06", label: "Notes" },
-  { id: "testimonials", num: "07", label: "Praise" },
-  { id: "contact", num: "08", label: "Contact" },
+  { id: "notes", num: "05", label: "Notes" },
+  { id: "testimonials", num: "06", label: "Praise" },
+  { id: "contact", num: "07", label: "Contact" },
 ];

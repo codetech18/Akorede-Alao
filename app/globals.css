@@ -248,12 +248,43 @@ video {
 .spine-inner .n {
   color: var(--accent);
 }
-.shell.wrap {
+.about-shell.wrap {
   padding: 0;
 }
+.about-shell {
+  display: block;
+}
+
+.about-main {
+  width: 100%;
+}
 .main {
+  display: flex;
+  flex-direction: column;
   padding: 60px 28px 100px 44px;
   min-width: 0;
+}
+
+.main > #top {
+  order: 1;
+}
+.main > #work {
+  order: 2;
+}
+.main > #skills {
+  order: 3;
+}
+.main > #experience {
+  order: 4;
+}
+.main > #notes {
+  order: 5;
+}
+.main > #testimonials {
+  order: 6;
+}
+.main > #contact {
+  order: 7;
 }
 
 /* ---------- hero ---------- */
@@ -501,7 +532,11 @@ video {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, transparent 55%, oklch(0.52 0.2 258 / 0.14));
+  background: linear-gradient(
+    160deg,
+    transparent 55%,
+    oklch(0.52 0.2 258 / 0.14)
+  );
   pointer-events: none;
 }
 .portrait img {

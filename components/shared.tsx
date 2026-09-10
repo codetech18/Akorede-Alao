@@ -73,7 +73,7 @@ export function Nav() {
         Akorede<span>.</span>
       </Link>
       <div className="nav-links">
-        <Link href="/#about">About</Link>
+        <Link href="/about">About</Link>
         <Link href="/#experience">Experience</Link>
         <Link href="/#work">Work</Link>
         <Link href="/#notes">Notes</Link>
@@ -98,7 +98,7 @@ export function Nav() {
 
       {open && (
         <div className="nav-mobile-drawer">
-          <Link href="/#about" onClick={() => setOpen(false)}>
+          <Link href="/about" onClick={() => setOpen(false)}>
             About
           </Link>
           <Link href="/#experience" onClick={() => setOpen(false)}>
