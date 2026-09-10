@@ -21,7 +21,19 @@ export default function AboutPage() {
               <span className="count">the builder</span>
             </Reveal>
             <div className="about">
-              <Reveal className="bio">
+              <Reveal
+                as="aside"
+                className="facts"
+                style={{ "--reveal-delay": "0ms" } as CSSProperties}
+              >
+                <div className="portrait">
+                  <img src="/korede.jpg" alt="Akorede Alao" />
+                </div>
+              </Reveal>
+              <Reveal
+                className="bio"
+                style={{ "--reveal-delay": "120ms" } as CSSProperties}
+              >
                 {about.paragraphs.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
@@ -29,15 +41,6 @@ export default function AboutPage() {
                 {about.paragraphsAfter.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
-              </Reveal>
-              <Reveal
-                as="aside"
-                className="facts"
-                style={{ "--reveal-delay": "120ms" } as CSSProperties}
-              >
-                <div className="portrait">
-                  <img src="/korede.jpg" alt="Akorede Alao" />
-                </div>
               </Reveal>
             </div>
           </section>
