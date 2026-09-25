@@ -42,6 +42,9 @@ export default function Home() {
         <main className="main">
           {/* ---------- 01 STORY ---------- */}
           <section id="top">
+            <Reveal as="p" className="hero-identity">
+              {hero.identity}
+            </Reveal>
             <Reveal className="avail">
               <span className="dot" />
               {site.availability}
@@ -54,11 +57,11 @@ export default function Home() {
               {hero.lede}
             </Reveal>
             <Reveal className="cta">
-              <a href="#work" className="btn btn-solid">
-                See the work
+              <a href={`mailto:${site.email}?subject=Project%20or%20role%20inquiry`} className="btn btn-solid">
+                Let's talk
               </a>
-              <a href="/about" className="btn btn-ghost">
-                About me
+              <a href="#work" className="btn btn-ghost">
+                See the work
               </a>
               <a href={site.cvPath} className="btn btn-ghost" download>
                 ↓ CV (PDF)
@@ -91,104 +94,12 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 03 SKILLS ---------- */}
-          <section className="sec" id="skills">
-            <Reveal className="sec-head">
-              <span className="num">03</span>
-              <h2>{skillsIntro.title}</h2>
-              <span className="count">
-                {skills.reduce((n, g) => n + g.items.length, 0)}+ tools
-              </span>
-            </Reveal>
-            <div className="skills-list">
-              {skills.map((g, i) => (
-                <Reveal
-                  className="skill-row"
-                  key={g.label}
-                  style={
-                    { "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties
-                  }
-                >
-                  <div className="skill-row-head">
-                    <span className="skill-index mono">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="display">{g.label}</h3>
-                  </div>
-                  <div className="skill-row-items">
-                    {g.items.map((item) => (
-                      <span className="skill-item" key={item}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </section>
-
-          {/* ---------- 04 EXPERIENCE ---------- */}
-          <section className="sec" id="experience">
-            <Reveal className="sec-head">
-              <span className="num">04</span>
-              <h2>{experienceIntro.title}</h2>
-              <span className="count">4+ years</span>
-            </Reveal>
-            <div className="exp-list">
-              {experience.map((role, i) => (
-                <Reveal
-                  key={role.company}
-                  className={`exp-item ${role.current ? "is-current" : ""}`}
-                  style={
-                    { "--reveal-delay": `${(i % 3) * 60}ms` } as CSSProperties
-                  }
-                >
-                  <span className="exp-dot" />
-                  <div className="exp-head">
-                    <span className="exp-period mono">{role.period}</span>
-                    {role.current && <span className="exp-badge">Current</span>}
-                  </div>
-                  <h3 className="display exp-role">
-                    {role.title}{" "}
-                    <span className="exp-at">@ {role.company}</span>
-                  </h3>
-                  <div className="exp-meta mono">
-                    {role.type
-                      ? `${role.location} · ${role.type}`
-                      : role.location}
-                  </div>
-                  <ul className="exp-bullets">
-                    {role.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                  {role.stack && (
-                    <div className="exp-stack">
-                      {role.stack.map((s) => (
-                        <span className="chip" key={s}>
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </Reveal>
-              ))}
-
-              <Reveal className="exp-item exp-education">
-                <span className="exp-dot exp-dot-edu" />
-                <span className="exp-period mono">{education.period}</span>
-                <h3 className="display exp-role">{education.degree}</h3>
-                <div className="exp-meta mono">{education.place}</div>
-              </Reveal>
-            </div>
-          </section>
-
           {/* ---------- 02 WORK ---------- */}
           <section className="sec" id="work">
             <Reveal className="sec-head">
               <span className="num">02</span>
               <h2>Selected work</h2>
-              <span className="count">7 shipped</span>
+              <span className="count">{flagships.length} featured projects</span>
             </Reveal>
 
             {flagships.map((f) => (
@@ -289,26 +200,21 @@ export default function Home() {
               const delay = {
                 "--reveal-delay": `${(i % 4) * 60}ms`,
               } as CSSProperties;
-              return p.href ? (
-                <Reveal
-                  as="a"
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mini"
-                  key={p.title}
-                  style={delay}
-                >
+              return (
+                <Reveal className="mini" key={p.title} style={delay}>
                   <h3 className="display">
-                    {p.title} <span className="ext">↗</span>
+                    {p.href ? (
+                      <a href={p.href} target="_blank" rel="noreferrer">
+                        {p.title} <span className="ext" aria-hidden="true">↗</span>
+                      </a>
+                    ) : p.title}
                   </h3>
                   <p>{p.desc}</p>
-                  <span className="yr">{p.year}</span>
-                </Reveal>
-              ) : (
-                <Reveal as="div" className="mini" key={p.title} style={delay}>
-                  <h3 className="display">{p.title}</h3>
-                  <p>{p.desc}</p>
+                  {p.ghHref && (
+                    <a className="mini-code" href={p.ghHref} target="_blank" rel="noreferrer" aria-label={`${p.title} source code`}>
+                      Code ↗
+                    </a>
+                  )}
                   <span className="yr">{p.year}</span>
                 </Reveal>
               );
@@ -321,7 +227,106 @@ export default function Home() {
                 {site.building.desc}
               </span>
             </Reveal>
+            <Reveal className="work-cta">
+              <p>Have a product or engineering challenge in mind?</p>
+              <a href={`mailto:${site.email}?subject=Project%20or%20role%20inquiry`}>
+                Tell me about it <span aria-hidden="true">↗</span>
+              </a>
+            </Reveal>
           </section>
+
+          {/* ---------- 03 SKILLS ---------- */}
+          <section className="sec" id="skills">
+            <Reveal className="sec-head">
+              <span className="num">03</span>
+              <h2>{skillsIntro.title}</h2>
+              <span className="count">
+                {skills.reduce((n, g) => n + g.items.length, 0)}+ tools
+              </span>
+            </Reveal>
+            <div className="skills-list">
+              {skills.map((g, i) => (
+                <Reveal
+                  className="skill-row"
+                  key={g.label}
+                  style={
+                    { "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties
+                  }
+                >
+                  <div className="skill-row-head">
+                    <span className="skill-index mono">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="display">{g.label}</h3>
+                  </div>
+                  <div className="skill-row-items">
+                    {g.items.map((item) => (
+                      <span className="skill-item" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* ---------- 04 EXPERIENCE ---------- */}
+          <section className="sec" id="experience">
+            <Reveal className="sec-head">
+              <span className="num">04</span>
+              <h2>{experienceIntro.title}</h2>
+              <span className="count">4+ years</span>
+            </Reveal>
+            <div className="exp-list">
+              {experience.map((role, i) => (
+                <Reveal
+                  key={role.company}
+                  className={`exp-item ${role.current ? "is-current" : ""}`}
+                  style={
+                    { "--reveal-delay": `${(i % 3) * 60}ms` } as CSSProperties
+                  }
+                >
+                  <span className="exp-dot" />
+                  <div className="exp-head">
+                    <span className="exp-period mono">{role.period}</span>
+                    {role.current && <span className="exp-badge">Current</span>}
+                  </div>
+                  <h3 className="display exp-role">
+                    {role.title}{" "}
+                    <span className="exp-at">@ {role.company}</span>
+                  </h3>
+                  <div className="exp-meta mono">
+                    {role.type
+                      ? `${role.location} · ${role.type}`
+                      : role.location}
+                  </div>
+                  <ul className="exp-bullets">
+                    {role.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                  {role.stack && (
+                    <div className="exp-stack">
+                      {role.stack.map((s) => (
+                        <span className="chip" key={s}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </Reveal>
+              ))}
+
+              <Reveal className="exp-item exp-education">
+                <span className="exp-dot exp-dot-edu" />
+                <span className="exp-period mono">{education.period}</span>
+                <h3 className="display exp-role">{education.degree}</h3>
+                <div className="exp-meta mono">{education.place}</div>
+              </Reveal>
+            </div>
+          </section>
+
 
           {/* ---------- 05 NOTES ---------- */}
           <section className="sec notes-sec" id="notes">

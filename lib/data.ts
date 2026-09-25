@@ -3,30 +3,29 @@
 // ============================================================
 
 export const site = {
-  name: "Codetech",
+  name: "Akorede",
+  fullName: "Akorede Alao",
   email: "akoredealao18@gmail.com",
-  url: "https://akorede.dev", // ← change to your real domain before launch
   availability: "Open for work · freelance & full-time",
   nowShipping: { name: "Servrr", desc: "QR ordering for restaurants" },
   building: { name: "StaffStack", desc: "HR & payroll for SMBs" },
   cvPath: "/cv/akorede-alao-cv.pdf", // put the PDF at public/cv/
   socials: [
-    { label: "X", href: "https://x.com/yourhandle" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/yourhandle" },
-    { label: "GitHub", href: "https://github.com/yourhandle" },
-    { label: "TikTok", href: "https://tiktok.com/@yourhandle" },
+    { label: "GitHub", href: "https://github.com/codetech18" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/alao-akorede-b528151bb" },
+    { label: "X", href: "https://x.com/codetech__" },
   ],
 };
 
 export const hero = {
+  identity: "Akorede Alao, Software Engineer",
   headline: ["I build software real businesses ", "run on."],
-  lede: "Four years shipping real products — restaurant ordering, market-trader inventory, and SaaS designed to survive contact with the street.",
+  lede: "Four years building web and mobile products for teams and businesses, from production APIs to software used on the restaurant floor.",
 };
 
 export const stats = [
-  { value: "07", accent: "+", label: "Products shipped" },
-  { value: "02", accent: "", label: "SaaS running live" },
-  { value: "04", accent: "+", label: "Years full-stack" },
+  { value: "04", accent: "+", label: "Years building software" },
+  { value: "03", accent: "", label: "Detailed case studies" },
   { value: "Web", accent: "+Mobile", label: "End to end, both platforms" },
 ];
 
@@ -34,8 +33,7 @@ export const about = {
   paragraphs: [
     "I'm Akorede Alao, a full-stack software engineer with 4+ years of experience shipping production web and mobile software end to end. I'm currently a Software Engineer at Zashiron Org, full-time and remote, working across TypeScript, React, Next.js, and React Native, with LLM-powered features. Alongside that, I design, build, and run my own products — including Servrr, a live multi-tenant SaaS platform, and StockLog, inventory software built for phone dealers.",
   ],
-  pullquote:
-    "Have to connect with the target audience outside the demo.",
+  pullquote: "Software should work for the people using it, beyond the demo.",
   paragraphsAfter: [
     "That constraint shapes everything: cash-first customers, patchy networks, staff who've never touched a dashboard. It's why Servrr uses permanent table tokens a waiter can control, and why StockLog mirrors how phone dealers actually track stock instead of how inventory software assumes they should.",
     "I own products end to end — positioning, architecture, design, code, and deployment — and bring the same discipline to team environments: four years across Zashiron, Dongmi Technologies, and ReadersPlug, shipping inside real codebases, deadlines, and constraints that weren't mine to set. I'm open to full-time roles, freelance work, and collaborations where that full loop matters.",
@@ -283,7 +281,7 @@ export const flagships: Flagship[] = [
       },
       {
         heading: "Result",
-        body: "Shipped to iOS and Android with launch copy tailored per platform, positioned for the exact market it was built inside of.",
+        body: "Built a mobile inventory flow for phone dealers, with per-device tracking and sync designed for unreliable connections.",
       },
     ],
     links: [{ label: "Full case study →", href: "/work/stocklog" }],
@@ -303,9 +301,9 @@ export const flagships: Flagship[] = [
         ],
       },
       {
-        heading: "What shipped",
+        heading: "What I built",
         paragraphs: [
-          "StockLog shipped to both app stores with launch copy written per platform — LinkedIn, X, and TikTok each got their own voice. It's built inside the market it serves, which is the only way software for this market works.",
+          "StockLog brings fast stock entry, per-device tracking, and offline-tolerant sync into a mobile workflow designed around the pace of a dealer's sales conversation.",
         ],
       },
     ],

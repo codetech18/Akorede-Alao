@@ -265,28 +265,6 @@ video {
   min-width: 0;
 }
 
-.main > #top {
-  order: 1;
-}
-.main > #work {
-  order: 2;
-}
-.main > #skills {
-  order: 3;
-}
-.main > #experience {
-  order: 4;
-}
-.main > #notes {
-  order: 5;
-}
-.main > #testimonials {
-  order: 6;
-}
-.main > #contact {
-  order: 7;
-}
-
 /* ---------- hero ---------- */
 .avail {
   display: inline-flex;
@@ -309,6 +287,14 @@ video {
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 24px;
+}
+.hero-identity {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.8vw, 21px);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 22px;
 }
 .h1 {
   font-family: var(--font-display);
@@ -412,7 +398,7 @@ video {
 /* ---------- stats ---------- */
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -1213,6 +1199,15 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.mini a:hover {
+  color: var(--accent);
+}
+.mini-code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  flex: none;
+}
 .mini .yr {
   margin-left: auto;
   font-family: var(--font-mono);
@@ -1236,6 +1231,33 @@ video {
 .building b {
   color: var(--ink);
   font-weight: 500;
+}
+.work-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 46px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+}
+.work-cta p {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.work-cta a {
+  color: var(--accent);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.work-cta a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* ---------- testimonials ---------- */
@@ -1685,7 +1707,7 @@ video {
     padding: 40px 28px 70px;
   }
   .stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   .about {
     grid-template-columns: 1fr;

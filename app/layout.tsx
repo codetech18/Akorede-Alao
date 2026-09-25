@@ -18,15 +18,17 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "700"],
 });
 
-const title = `${site.name} — Full-stack Engineer & Builder`;
+const title = `${site.fullName} — Software Engineer`;
 const description =
-  "Full-stack engineer in Lagos shipping real SaaS products: restaurant ordering, market-trader inventory, and software built to survive contact with the street.";
+  "Akorede Alao is a software engineer building web and mobile products, production APIs, and software for real business workflows.";
+const deployedHost = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL ?? (deployedHost ? `https://${deployedHost}` : undefined);
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  ...(siteOrigin ? { metadataBase: new URL(siteOrigin), alternates: { canonical: "/" } } : {}),
   title: {
     default: title,
-    template: `%s — ${site.name}`,
+    template: `%s — ${site.fullName}`,
   },
   description,
   keywords: [
@@ -41,23 +43,21 @@ export const metadata: Metadata = {
     "remote developer",
     "Akorede Alao",
   ],
-  authors: [{ name: site.name, url: site.url }],
-  creator: site.name,
+  authors: [{ name: site.fullName }],
+  creator: site.fullName,
   openGraph: {
     type: "website",
-    url: site.url,
-    siteName: `${site.name} — Portfolio`,
+    ...(siteOrigin ? { url: siteOrigin } : {}),
+    siteName: `${site.fullName} — Portfolio`,
     title,
     description,
     locale: "en_US",
-    // Add an OG image at public/og.png (1200x630) and uncomment:
-    // images: [{ url: "/og.png", width: 1200, height: 630, alt: title }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    // creator: "@yourhandle",
+    creator: "@codetech__",
   },
   robots: { index: true, follow: true },
 };

@@ -81,9 +81,9 @@ export function Nav() {
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
         <ThemeToggle />
-        <Link href="/#contact" className="nav-hire">
-          Available for work →
-        </Link>
+        <a href={`mailto:${site.email}?subject=Project%20or%20role%20inquiry`} className="nav-hire">
+          Let's talk →
+        </a>
         <button
           className={`nav-burger ${open ? "is-open" : ""}`}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -113,9 +113,9 @@ export function Nav() {
           <Link href="/#contact" onClick={() => setOpen(false)}>
             Contact
           </Link>
-          <Link href="/#contact" className="nav-mobile-hire" onClick={() => setOpen(false)}>
-            Available for work →
-          </Link>
+          <a href={`mailto:${site.email}?subject=Project%20or%20role%20inquiry`} className="nav-mobile-hire" onClick={() => setOpen(false)}>
+            Let's talk →
+          </a>
         </div>
       )}
     </nav>
@@ -201,7 +201,7 @@ export function Footer() {
       </div>
 
       <div className="baseline">
-        <span>© 2026 {site.name.toUpperCase()}</span>
+        <span>© 2026 {site.fullName.toUpperCase()}</span>
         <span className="soc">
           {site.socials.map((s) => (
             <a key={s.label} href={s.href} target="_blank" rel="noreferrer">

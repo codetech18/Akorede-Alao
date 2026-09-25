@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
-import { about, site } from "@/lib/data";
+import { about } from "@/lib/data";
 import { Footer, Nav, Reveal } from "@/components/shared";
 
 export const metadata = {
-  title: `About — ${site.name}`,
+  title: "About",
   description:
     "About Akorede Alao, a full-stack software engineer and product builder.",
 };
