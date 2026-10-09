@@ -18,11 +18,20 @@ import {
 } from "@/lib/data";
 import { Reveal, Nav, Footer } from "@/components/shared";
 import { StockLogIllustration } from "@/components/stocklog-illustration";
+import { personSchema, siteOrigin } from "@/lib/seo";
+import { StructuredData } from "@/components/structured-data";
 
 export default function Home() {
   return (
     <>
       <Nav />
+      <StructuredData data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          personSchema(),
+          { "@type": "WebSite", name: `${site.fullName} — Portfolio`, url: siteOrigin },
+        ],
+      }} />
       <div className="shell wrap">
         <main className="main">
           <section id="top" className="studio-hero">

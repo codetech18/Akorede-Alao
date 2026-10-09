@@ -1,12 +1,9 @@
 import type { CSSProperties } from "react";
 import { about } from "@/lib/data";
 import { Footer, Nav, Reveal } from "@/components/shared";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About",
-  description:
-    "About Akorede Alao, a full-stack software engineer and product builder.",
-};
+export const metadata = pageMetadata("/about", "About", "Meet Akorede Alao, a software engineer with 4+ years building production web and mobile products with React, Next.js, and Node.js.");
 
 export default function AboutPage() {
   return (

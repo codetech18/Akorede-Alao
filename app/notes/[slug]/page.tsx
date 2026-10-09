@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { notes } from "@/lib/data";
 import { renderInline } from "@/lib/render-inline";
 import { Nav, Footer } from "@/components/shared";
+import { absoluteUrl, pageMetadata, personSchema } from "@/lib/seo";
+import { StructuredData } from "@/components/structured-data";
 
 export function generateStaticParams() {
   return notes.map((n) => ({ slug: n.slug }));
@@ -18,13 +20,12 @@ export async function generateMetadata({
   const note = notes.find((n) => n.slug === slug);
   if (!note) return {};
   const firstParagraph = note.blocks.find((block) => block.type === "p");
-  const description = firstParagraph?.text.slice(0, 150);
+  const description = (firstParagraph?.text ?? note.title).replace(/\*/g, "").slice(0, 160);
+  const base = pageMetadata(`/notes/${slug}`, note.title, description);
   return {
-    title: note.title,
-    description,
+    ...base,
     openGraph: {
-      title: note.title,
-      description,
+      ...base.openGraph,
       type: "article",
       publishedTime: note.date,
     },
@@ -50,6 +51,15 @@ export default async function NotePage({
   return (
     <>
       <Nav />
+      <StructuredData data={{
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: note.title,
+        datePublished: note.date,
+        author: personSchema(),
+        mainEntityOfPage: absoluteUrl(`/notes/${note.slug}`),
+        image: absoluteUrl("/opengraph-image"),
+      }} />
       <article className="article">
         <Link href="/#notes" className="back">
           ← All field notes

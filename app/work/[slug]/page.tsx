@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { flagships } from "@/lib/data";
 import { Nav, Footer } from "@/components/shared";
 import { StockLogIllustration } from "@/components/stocklog-illustration";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return flagships.filter((f) => f.longform && f.longform.length > 0).map((f) => ({ slug: f.slug }));
@@ -16,15 +17,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = flagships.find((f) => f.slug === slug);
-  if (!project) return {};
-  return {
-    title: `${project.title} — Case Study`,
-    description: project.desc,
-    openGraph: {
-      title: `${project.title} — Case Study`,
-      description: project.desc,
-    },
-  };
+  if (!project?.longform?.length) return {};
+  return pageMetadata(`/work/${slug}`, `${project.title} — Case Study`, project.desc);
 }
 
 export default async function CaseStudyPage({

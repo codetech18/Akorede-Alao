@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/data";
+import { siteOrigin } from "@/lib/seo";
 import "./globals.css";
 import "./studio.css";
 
@@ -22,8 +23,6 @@ const mono = JetBrains_Mono({
 const title = `${site.fullName} — Software Engineer`;
 const description =
   "Akorede Alao is a software engineer building web and mobile products, production APIs, and software for real business workflows.";
-const deployedHost = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
-const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL ?? (deployedHost ? `https://${deployedHost}` : undefined);
 
 export const metadata: Metadata = {
   ...(siteOrigin ? { metadataBase: new URL(siteOrigin), alternates: { canonical: "/" } } : {}),
@@ -39,8 +38,6 @@ export const metadata: Metadata = {
     "TypeScript",
     "React Native",
     "SaaS builder",
-    "Lagos",
-    "Nigeria",
     "remote developer",
     "Akorede Alao",
   ],
