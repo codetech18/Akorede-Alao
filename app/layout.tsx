@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
+import { Manrope, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/data";
 import "./globals.css";
+import "./studio.css";
 
-const display = Bricolage_Grotesque({
+const display = Manrope({
   subsets: ["latin"],
   variable: "--font-display",
   weight: ["400", "600", "700", "800"],
 });
-const inter = Inter({
+const inter = DM_Sans({
   subsets: ["latin"],
   variable: "--font-inter",
 });
@@ -76,7 +77,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(localStorage.getItem("theme")!=="light"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`,
+            __html: `(function(){try{if(localStorage.getItem("theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();`,
           }}
         />
       </head>

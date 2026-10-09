@@ -27,7 +27,7 @@ export default function AboutPage() {
                 style={{ "--reveal-delay": "0ms" } as CSSProperties}
               >
                 <div className="portrait">
-                  <img src="/korede.jpg" alt="Akorede Alao" />
+                  <img src="/akorede-portrait-enhanced.png" alt="Akorede Alao" />
                 </div>
               </Reveal>
               <Reveal

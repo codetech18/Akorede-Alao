@@ -139,6 +139,7 @@ export type Flagship = {
   title: string;
   desc: string;
   video?: string; // e.g. "/videos/servrr-demo.mp4"
+  image?: string;
   poster?: string; // e.g. "/posters/servrr.webp"
   videoLabel: string;
   // Omit caseStudy/longform for a lighter entry: video + basic info, no
@@ -232,11 +233,11 @@ export const flagships: Flagship[] = [
       },
     ],
     links: [
-      { label: "Live · foleman-eletricals1.vercel.app ↗", href: "https://foleman-eletricals1.vercel.app/", external: true },
+      { label: "Live site ↗", href: "https://foleman-eletricals1.vercel.app/", external: true },
       { label: "Full case study →", href: "/work/foleman-electricals" },
     ],
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "GSAP", "Three.js"],
-    meta: { year: "2025", type: "Client site — Freelance", where: "foleman-eletricals1.vercel.app" },
+    meta: { year: "2025", type: "Client site — Freelance", where: "Foleman Electricals" },
     longform: [
       {
         heading: "Why this exists",
@@ -309,15 +310,25 @@ export const flagships: Flagship[] = [
     ],
   },
   {
+    slug: "codetech-gadgets",
+    title: "CodeTech Gadgets",
+    desc: "An e-commerce storefront for buying, selling, and swapping devices, with real-time inventory.",
+    image: "/posters/codetech-gadgets.png",
+    videoLabel: "CodeTech Gadgets storefront",
+    links: [{ label: "Live site ↗", href: "https://codetechgadgets.online", external: true }],
+    stack: ["Firebase"],
+    meta: { year: "2024", type: "E-commerce", where: "CodeTech Gadgets" },
+  },
+  {
     slug: "crediteasee",
     title: "CreditEase",
     desc: "Fintech landing page built from Figma, with a custom typewriter hook in TypeScript.",
     video: "/videos/crediteasee.mp4",
     poster: "/posters/crediteasee.jpg",
     videoLabel: "CreditEase · demo clip plays here",
-    links: [{ label: "Live · crediteasee.netlify.app ↗", href: "https://crediteasee.netlify.app/", external: true }],
+    links: [{ label: "Live site ↗", href: "https://crediteasee.netlify.app/", external: true }],
     stack: ["React", "TypeScript"],
-    meta: { year: "2024", type: "Landing page", where: "crediteasee.netlify.app" },
+    meta: { year: "2024", type: "Landing page", where: "CreditEase" },
   },
 ];
 
@@ -334,11 +345,6 @@ export const alsoShipped: AlsoShipped[] = [
     title: "LIV DOT Event Viewer",
     desc: "React Native event app with an 8-state live flow, built & shipped on Expo",
     year: "2025",
-  },
-  {
-    title: "CodeTech Gadget",
-    desc: "Full-stack e-commerce, dark luxury aesthetic, Firebase real-time inventory",
-    year: "2024",
   },
   {
     title: "AssociateVisuals",
