@@ -11,6 +11,7 @@ import {
   education,
   flagships,
   alsoShipped,
+  engineeringProjects,
   testimonialsIntro,
   testimonials,
   notes,
@@ -74,7 +75,7 @@ export default function Home() {
                   <Reveal as="article" className={`project-card project-${f.slug} ${i === 0 ? "project-featured" : ""}`} key={f.slug}>
                     <div className="project-stage">
                       <div className="project-stage-heading">
-                        <div><h3>{f.title}</h3><p>{f.slug === "servrr" ? "A simpler way to order. A better way to run the restaurant." : f.desc}</p></div>
+                        <div>{f.slug === "servrr" && <span className="product-ownership">My product / Built and operated end to end</span>}<h3>{f.title}</h3><p>{f.desc}</p></div>
                         <span className="project-index">{String(i + 1).padStart(2, "0")} / {f.meta.type}</span>
                       </div>
                       <div className="project-screen">
@@ -84,12 +85,25 @@ export default function Home() {
                       </div>
                       {destination && <Link className="project-overlay" href={destination} aria-label={`Explore ${f.title}${caseLink ? " case study" : ""}`} {...(!caseLink ? { target: "_blank", rel: "noreferrer" } : {})} />}
                     </div>
+                    {f.slug === "servrr" && <div className="product-depth">
+                      <div><span className="studio-kicker">Beyond the website</span><h4>Software for the restaurant floor.</h4><p>From a diner scanning a table code to staff managing an active session: the product coordinates a real service workflow.</p></div>
+                      <dl><div><dt>Product ownership</dt><dd>Direction, architecture, interface, code, and deployment.</dd></div><div><dt>System design</dt><dd>Permanent table identity, staff-controlled sessions, restaurant-specific menus and roles.</dd></div><div><dt>Live product</dt><dd>A shared SaaS deployment, subscription tiers, and email delivery.</dd></div></dl>
+                    </div>}
                     <div className="project-caption"><span>{f.meta.year} / {f.meta.type}</span><div>{f.links.map((link) => <Link key={link.href} href={link.href} {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}>{link.label}</Link>)}</div></div>
                   </Reveal>
                 );
               })}
             </div>
 
+            <Reveal className="subhead">More product & engineering work</Reveal>
+            <div className="engineering-grid">
+              {engineeringProjects.map((project) => <Reveal as="article" className="engineering-card" key={project.title}>
+                <div className="engineering-label"><span>{project.category}</span><span>{project.status}</span></div>
+                <h3>{project.title}</h3><p>{project.desc}</p><p className="engineering-detail">{project.detail}</p>
+                <div className="engineering-stack">{project.stack.join(" / ")}</div>
+                <div className="engineering-links">{"href" in project && project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit site ↗</a>}<a href={project.source} target="_blank" rel="noreferrer">Explore code ↗</a></div>
+              </Reveal>)}
+            </div>
             <Reveal className="subhead">Also shipped</Reveal>
             {alsoShipped.map((p, i) => {
               const delay = {

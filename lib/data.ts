@@ -156,7 +156,7 @@ export const flagships: Flagship[] = [
   {
     slug: "servrr",
     title: "Servrr",
-    desc: "QR-code ordering for restaurants. One scan, no app to install, table sessions staff open and close. Built multi-tenant from the ground up.",
+    desc: "My restaurant operations product: multi-tenant ordering, staff-controlled table sessions, and the systems behind a live SaaS business. I own the product direction, architecture, implementation, and deployment.",
     video: "/videos/servrr.mp4",
     poster: "/posters/servrr.jpg",
     videoLabel: "Servrr · demo clip plays here",
@@ -186,6 +186,13 @@ export const flagships: Flagship[] = [
     meta: { year: "2025", type: "Multi-tenant SaaS", where: "servrr.ng" },
     longform: [
       {
+        heading: "My product, from the first decision to deployment",
+        paragraphs: [
+          "Servrr is a product I build and operate, rather than a client landing-page commission. My responsibility covers the workflow, product positioning, interface, frontend, backend, and deployment. The public website is only the entry point; the product has to coordinate what happens between a diner, the restaurant team, and an active table session.",
+          "The engineering problem is operational correctness: an order must belong to the right restaurant and session, staff must control when a table can order, and the software must fit service on a busy restaurant floor. A polished interface matters, but it is useful only when those underlying rules hold.",
+        ],
+      },
+      {
         heading: "Why this exists",
         paragraphs: [
           "Walk into a busy restaurant and watch how an order travels: a customer flags a waiter, the waiter scribbles on a chit or memorises it, shouts it to the kitchen, and hopes. Orders get lost, tables get the wrong food, and during rush hour the whole system runs on adrenaline.",
@@ -203,6 +210,13 @@ export const flagships: Flagship[] = [
         heading: "What shipped",
         paragraphs: [
           "Servrr is live at servrr.ng with Growth and Pro pricing tiers, and outreach is running across local restaurants. It's a real product in a real market, being sold, not a portfolio piece wearing a SaaS costume.",
+        ],
+      },
+      {
+        heading: "What this project demonstrates",
+        paragraphs: [
+          "The permanent QR token is a small surface detail backed by a larger lifecycle decision. Separating a table's identity from its current session lets a physical code remain usable while keeping ordering under staff control. Restaurant-specific menus, roles, and branding sit within a shared deployment rather than separate copies of the application.",
+          "Servrr also involves the work around the application: packaging the offering into subscription tiers, deploying services, handling email delivery, documenting privacy and product terms, and bringing the product to restaurant operators. These are responsibilities I own alongside the code.",
         ],
       },
     ],
@@ -340,17 +354,48 @@ export type AlsoShipped = {
   ghHref?: string;
 };
 
-export const alsoShipped: AlsoShipped[] = [
+export const engineeringProjects = [
+  {
+    title: "StaffStack",
+    category: "Business software",
+    status: "In development",
+    desc: "HR and payroll software connecting staff records, monthly payroll, attendance, leave, and school subject coverage.",
+    detail: "A TypeScript payroll engine, organisation-based PostgreSQL data model, bank exports, and email payslip delivery.",
+    stack: ["React", "TypeScript", "Supabase"],
+    href: "https://school-staff-stack.vercel.app/",
+    source: "https://github.com/codetech18/Staff-Stack",
+  },
   {
     title: "LIV DOT Event Viewer",
-    desc: "React Native event app with an 8-state live flow, built & shipped on Expo",
-    year: "2025",
+    category: "Mobile engineering",
+    status: "Assessment prototype",
+    desc: "A mobile event viewer with explicit purchase, pending payment, live, replay, and offline states.",
+    detail: "Network detection, manual retry, and restoration of the previous screen. Payment and playback are simulated.",
+    stack: ["React Native", "TypeScript", "Expo"],
+    source: "https://github.com/codetech18/liv-mobile-app",
   },
   {
     title: "AssociateVisuals",
-    desc: "Cinematographer portfolio, modernist minimal, GSAP & Cloudinary",
-    year: "2026",
+    category: "Creative frontend",
+    status: "Portfolio website",
+    desc: "A cinematography portfolio with project pages, scroll choreography, and on-demand video playback.",
+    detail: "Typed project content and click-to-load Google Drive players keep video loading intentional.",
+    stack: ["Next.js", "TypeScript", "GSAP"],
+    href: "https://associate-visuals.vercel.app",
+    source: "https://github.com/codetech18/Associate-visuals-",
   },
+  {
+    title: "FoodCo Backend",
+    category: "Backend engineering",
+    status: "Source showcase",
+    desc: "An ordering backend with explicit service and payment rules, plus subscription billing validation.",
+    detail: "Tests cover unpaid orders, table closure, checkout configuration, and successful subscription payment events.",
+    stack: ["Node.js", "Express", "Firebase"],
+    source: "https://github.com/codetech18/FoodCo_Backend",
+  },
+];
+
+export const alsoShipped: AlsoShipped[] = [
   {
     title: "Vestify.",
     desc: "Crypto investment dashboard with real-time asset prices and market analysis",

@@ -51,6 +51,24 @@ section[id] { scroll-margin-top: 35px; }
 .project-stage-heading { display: flex; justify-content: space-between; gap: 25px; margin-bottom: 32px; }
 .project-stage h3 { font-family: var(--font-display), sans-serif; font-weight: 500; font-size: 28px; letter-spacing: -1px; }
 .project-featured h3 { font-size: 38px; }
+.product-ownership { display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c0d2ff; margin-bottom: 15px; }
+.project-featured .project-stage p { max-width: 620px; }
+.product-depth { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 35px 32px; border: 1px solid var(--line); border-radius: 0 0 8px 8px; }
+.product-depth h4 { font-family: var(--font-display), sans-serif; font-size: 25px; font-weight: 500; letter-spacing: -1px; margin: 14px 0; }
+.product-depth p, .product-depth dd { color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+.product-depth dl, .product-depth dd { margin: 0; }
+.product-depth dl > div + div { margin-top: 18px; }
+.product-depth dt { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.engineering-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.engineering-card { padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); display: flex; flex-direction: column; }
+.engineering-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 10px; color: var(--ink-soft); }
+.engineering-label span:first-child { color: var(--accent); }
+.engineering-card h3 { font-family: var(--font-display), sans-serif; font-size: 25px; font-weight: 500; letter-spacing: -1px; margin: 24px 0 15px; }
+.engineering-card p { font-size: 14px; line-height: 1.8; }
+.engineering-card .engineering-detail { color: var(--ink-soft); margin: 12px 0 24px; }
+.engineering-stack { font-size: 11px; color: var(--ink-soft); margin-top: auto; }
+.engineering-links { display: flex; gap: 24px; padding-top: 22px; font-size: 12px; }
+.engineering-links a:hover { color: var(--accent); }
 .project-stage p { max-width: 360px; font-size: 12px; color: #bdc8ce; line-height: 1.65; margin-top: 10px; }
 .project-featured p { font-size: 15px; }
 .project-index { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; color: #b3bfd0; }
@@ -109,6 +127,9 @@ section[id] { scroll-margin-top: 35px; }
   .project-featured .project-stage-heading { flex-direction: row; }
 }
 @media (max-width: 760px) {
+  .product-depth, .engineering-grid { grid-template-columns: 1fr; }
+  .product-depth { padding: 26px 20px; gap: 26px; }
+  .engineering-card { padding: 24px; }
   .wrap, .nav, .shell.wrap { padding-inline: 24px; }
   .nav { height: 82px; }
   .main { padding: 0; }
