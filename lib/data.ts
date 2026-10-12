@@ -140,6 +140,7 @@ export type Flagship = {
   desc: string;
   video?: string; // e.g. "/videos/servrr-demo.mp4"
   image?: string;
+  gallery?: { src: string; alt: string; caption: string }[];
   poster?: string; // e.g. "/posters/servrr.webp"
   videoLabel: string;
   // Omit caseStudy/longform for a lighter entry: video + basic info, no
@@ -219,6 +220,45 @@ export const flagships: Flagship[] = [
           "Servrr also involves the work around the application: packaging the offering into subscription tiers, deploying services, handling email delivery, documenting privacy and product terms, and bringing the product to restaurant operators. These are responsibilities I own alongside the code.",
         ],
       },
+    ],
+  },
+  {
+    slug: "staffstack",
+    title: "StaffStack",
+    desc: "People and payroll software for schools: staff records, monthly payroll, leave, attendance, and subject coverage in one connected workspace.",
+    image: "/posters/staffstack.png",
+    gallery: [{ src: "/posters/staffstack-setup.png", alt: "StaffStack setup steps and frequently asked questions", caption: "The setup flow connects school configuration, staff salary structures, bank details, and teaching assignments before payroll preparation." }],
+    videoLabel: "StaffStack product preview",
+    links: [
+      { label: "Live workspace ↗", href: "https://school-staff-stack.vercel.app/", external: true },
+      { label: "Full case study →", href: "/work/staffstack" },
+      { label: "Source code ↗", href: "https://github.com/codetech18/Staff-Stack", external: true },
+    ],
+    stack: ["React", "TypeScript", "Supabase", "PostgreSQL", "Resend"],
+    meta: { year: "2026", type: "HR & payroll product", where: "StaffStack" },
+    caseStudy: [
+      { heading: "Problem", body: "Staff records, salary calculations, leave requests, and teaching assignments affect one another but are often managed separately." },
+      { heading: "Constraint", body: "Payroll needs explicit calculation rules, and school administrators need to see the teaching coverage affected by staff leave." },
+      { heading: "Decision", body: "Connect people, salary structures, payroll runs, leave, attendance, and subject assignments in an organisation-based PostgreSQL model." },
+      { heading: "Implementation", body: "A TypeScript payroll engine, bank-ready exports, printable payslips, and email delivery support the operational workflow behind the interface." },
+    ],
+    longform: [
+      { heading: "A workspace for the people running a school", paragraphs: [
+        "StaffStack connects the administrative work around a school's team: maintaining staff records, preparing monthly payroll, handling leave, recording attendance, and tracking who teaches each subject. The public page introduces the product; the workspace is where those interconnected tasks happen.",
+        "The aim is to make consequences visible across workflows. A teacher's leave request is more useful when the administrator can also see which subjects that person covers. Payroll depends on the same staff records and salary structures, rather than a separate list maintained elsewhere.",
+      ] },
+      { heading: "Payroll is a calculation system", paragraphs: [
+        "The TypeScript payroll engine separates salary inputs from calculated payslip outputs. It handles gross pay, configured deductions, employee and employer contributions, and net pay. The implementation includes progressive PAYE bands and per-employee deduction toggles.",
+        "Payroll runs and payslips are stored separately from current salary structures. Bank-ready CSV exports, printable payslip views, and email delivery turn the calculations into usable administrative outputs.",
+      ] },
+      { heading: "School-specific coverage", paragraphs: [
+        "Subject assignments connect teachers to the classes and subjects they cover. The workspace flags unstaffed subjects and assignments with only one teacher, making coverage gaps visible.",
+        "Showing assigned subjects alongside leave requests brings that context into the approval decision. This is a school-specific workflow rather than a generic employee directory.",
+      ] },
+      { heading: "The system behind the screens", paragraphs: [
+        "React and TypeScript provide the interface, backed by Supabase authentication and an organisation-based PostgreSQL schema. Staff, departments, payroll runs, leave requests, and attendance records share a connected data model.",
+        "StaffStack is an evolving product, with the focus on bringing payroll preparation, people management, and teaching coverage into a consistent administrative workflow.",
+      ] },
     ],
   },
   {
@@ -355,16 +395,6 @@ export type AlsoShipped = {
 };
 
 export const engineeringProjects = [
-  {
-    title: "StaffStack",
-    category: "Business software",
-    status: "In development",
-    desc: "HR and payroll software connecting staff records, monthly payroll, attendance, leave, and school subject coverage.",
-    detail: "A TypeScript payroll engine, organisation-based PostgreSQL data model, bank exports, and email payslip delivery.",
-    stack: ["React", "TypeScript", "Supabase"],
-    href: "https://school-staff-stack.vercel.app/",
-    source: "https://github.com/codetech18/Staff-Stack",
-  },
   {
     title: "LIV DOT Event Viewer",
     category: "Mobile engineering",

@@ -44,6 +44,7 @@ section[id] { scroll-margin-top: 35px; }
 .project-featured { grid-column: 1 / -1; }
 .project-stage { position: relative; background: #272a31; border-radius: 8px; padding: 32px 32px 0; height: 375px; overflow: hidden; color: #f1f0eb; }
 .project-featured .project-stage { background: radial-gradient(ellipse at 50% 0, #4a679766, transparent 70%), #202b42; height: auto; padding: 48px 48px 0; }
+.project-staffstack.project-featured .project-stage { background: radial-gradient(ellipse at 50% 0, #74916a44, transparent 70%), #20372d; }
 .project-foleman-electricals .project-stage { background: #242422; }
 .project-stocklog .project-stage { background: #202927; }
 .project-codetech-gadgets .project-stage { background: #222c45; }
@@ -114,6 +115,9 @@ section[id] { scroll-margin-top: 35px; }
 .baseline { font-family: var(--font-inter), sans-serif; font-size: 11px; text-transform: none; }
 .article { max-width: 850px; padding-top: 75px; }
 .article h1 { font-weight: 500; }
+.case-gallery { margin: 32px 0; }
+.case-gallery img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+.case-gallery figcaption { margin-top: 12px; font-size: 12px; line-height: 1.7; color: var(--ink-soft); }
 .article h2 { font-weight: 500; letter-spacing: -1px; }
 .about-main { padding-top: 50px; }
 .about-page .portrait img { object-position: center 28%; }

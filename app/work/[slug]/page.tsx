@@ -56,6 +56,8 @@ export default async function CaseStudyPage({
               poster={project.poster}
               src={project.video}
             />
+          ) : project.image ? (
+            <img src={project.image} alt={`${project.title} product preview`} />
           ) : project.slug === "stocklog" ? (
             <div className="ph ph-art">
               <StockLogIllustration />
@@ -66,6 +68,13 @@ export default async function CaseStudyPage({
             </div>
           )}
         </div>
+
+        {project.gallery?.map((image) => (
+          <figure className="case-gallery" key={image.src}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            <figcaption>{image.caption}</figcaption>
+          </figure>
+        ))}
 
         <div className="grid4">
           {(project.caseStudy ?? []).map((c) => (
