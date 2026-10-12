@@ -227,7 +227,18 @@ export const flagships: Flagship[] = [
     title: "StaffStack",
     desc: "People and payroll software for schools: staff records, monthly payroll, leave, attendance, and subject coverage in one connected workspace.",
     image: "/posters/staffstack.png",
-    gallery: [{ src: "/posters/staffstack-setup.png", alt: "StaffStack setup steps and frequently asked questions", caption: "The setup flow connects school configuration, staff salary structures, bank details, and teaching assignments before payroll preparation." }],
+    gallery: [
+      {
+        src: "/posters/staffstack-dashboard.png",
+        alt: "StaffStack demo dashboard showing payroll totals, attendance, leave requests, and teaching coverage alerts",
+        caption: "Inside the workspace: payroll trends, staff attendance, pending leave requests, and teaching coverage gaps together in one operational overview. Shown with demo data.",
+      },
+      {
+        src: "/posters/staffstack-setup.png",
+        alt: "StaffStack setup steps and frequently asked questions",
+        caption: "The setup flow connects school configuration, staff salary structures, bank details, and teaching assignments before payroll preparation.",
+      },
+    ],
     videoLabel: "StaffStack product preview",
     links: [
       { label: "Live workspace ↗", href: "https://school-staff-stack.vercel.app/", external: true },
