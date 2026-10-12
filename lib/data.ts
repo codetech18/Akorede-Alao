@@ -437,7 +437,7 @@ export const alsoShipped: AlsoShipped[] = [
     title: "Bakery Support",
     desc: "B2B site for rotary oven manufacturing and bakery equipment setup services",
     year: "2023",
-    href: "https://keen-maamoul-721e8e.netlify.app/",
+    href: "https://bakerysupportservices.vercel.app/",
     ghHref: "https://github.com/codetech18/BSS-website",
   },
   {
