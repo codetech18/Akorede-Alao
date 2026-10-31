@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "/",
     "/about",
+    "/projects",
     ...flagships.filter((project) => project.longform?.length).map((project) => `/work/${project.slug}`),
     ...notes.map((note) => `/notes/${note.slug}`),
   ];

@@ -73,9 +73,8 @@ export function Nav() {
         Akorede<span>.</span>
       </Link>
       <div className="nav-links">
-        <Link href="/#about">The engineer</Link>
-        <Link href="/#experience">Experience</Link>
-        <Link href="/#work">Work</Link>
+        <Link href="/about">About</Link>
+        <Link href="/projects">Projects</Link>
         <Link href="/#notes">Notes</Link>
         <Link href="/#contact">Contact</Link>
       </div>
@@ -98,14 +97,11 @@ export function Nav() {
 
       {open && (
         <div className="nav-mobile-drawer">
-          <Link href="/#about" onClick={() => setOpen(false)}>
+          <Link href="/about" onClick={() => setOpen(false)}>
             About
           </Link>
-          <Link href="/#experience" onClick={() => setOpen(false)}>
-            Experience
-          </Link>
-          <Link href="/#work" onClick={() => setOpen(false)}>
-            Work
+          <Link href="/projects" onClick={() => setOpen(false)}>
+            Projects
           </Link>
           <Link href="/#notes" onClick={() => setOpen(false)}>
             Notes

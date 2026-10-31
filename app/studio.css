@@ -33,7 +33,8 @@ section[id] { scroll-margin-top: 35px; }
 .now { margin: 0; padding: 0 0 0 20px; background: none; box-shadow: none; border: none; border-left: 1px solid var(--line); border-radius: 0; }
 .now .label { font-family: var(--font-inter), sans-serif; font-size: 10px; letter-spacing: 1px; color: var(--ink-soft); line-height: 2; }
 .now .label b { display: block; color: var(--accent); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; }
-.shipping-availability { display: block; font-size: 11px; letter-spacing: 0; text-transform: none; }
+.shipping-availability { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 9px; padding: 6px 11px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, var(--paper)); color: var(--ink); font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 1.35; text-transform: none; }
+.shipping-availability::before { content: ""; width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #4f9a68; box-shadow: 0 0 0 3px color-mix(in srgb, #4f9a68 16%, transparent); }
 .sec { margin-top: 80px; padding-top: 0; }
 #work { margin-top: 0; }
 .sec-head { border-top: 1px solid var(--line); border-bottom: none; padding: 35px 0 30px; margin: 0; }
@@ -121,6 +122,31 @@ section[id] { scroll-margin-top: 35px; }
 .article h2 { font-weight: 500; letter-spacing: -1px; }
 .about-main { padding-top: 50px; }
 .about-page .portrait img { object-position: center 28%; }
+.about-section-intro { max-width: 58ch; margin: 18px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+.about-skills, .about-experience { margin-top: 88px; }
+.about-skills .skills-list, .about-experience .exp-list { margin-top: 22px; }
+.about-experience .exp-item { padding-bottom: 38px; }
+.about-experience .exp-item:last-child { padding-bottom: 0; }
+.all-projects-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 34px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.all-projects-link p { color: var(--ink-soft); font-size: 13px; }
+.all-projects-link .btn { display: inline-flex; gap: 12px; align-items: center; }
+.projects-main { padding-top: 52px; }
+.projects-intro { padding: 40px 0 18px; }
+.projects-intro h1 { margin: 20px 0 16px; font-family: var(--font-display), sans-serif; font-size: clamp(42px, 6vw, 72px); font-weight: 500; line-height: 1.08; letter-spacing: -.06em; }
+.projects-intro > p { max-width: 54ch; color: var(--ink-soft); font-size: 16px; line-height: 1.8; }
+.projects-featured, .projects-engineering, .projects-more { margin-top: 48px; }
+.projects-featured .project-gallery { margin-top: 8px; }
+.projects-engineering .engineering-card { min-height: 270px; }
+.projects-engineering .shipped-card .engineering-links { margin-top: auto; }
+.projects-more-list { border-top: 1px solid var(--line); }
+@media (max-width: 760px) {
+  .projects-main { padding-top: 20px; }
+  .projects-intro { padding-top: 32px; }
+  .projects-intro h1 { font-size: clamp(38px, 11vw, 56px); }
+  .projects-intro > p { font-size: 14px; }
+  .projects-featured, .projects-engineering, .projects-more { margin-top: 34px; }
+  .all-projects-link { align-items: flex-start; padding: 19px; }
+}
 @media (max-width: 1000px) {
   .wrap, .nav, .shell.wrap { padding-inline: 36px; }
   .nav-links { gap: 15px; }

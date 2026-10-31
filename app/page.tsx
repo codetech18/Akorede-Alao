@@ -4,23 +4,24 @@ import {
   site,
   hero,
   about,
-  skillsIntro,
-  skills,
-  experienceIntro,
-  experience,
-  education,
   flagships,
-  alsoShipped,
-  engineeringProjects,
   testimonialsIntro,
   testimonials,
   notes,
   notesIntro,
 } from "@/lib/data";
 import { Reveal, Nav, Footer } from "@/components/shared";
-import { StockLogIllustration } from "@/components/stocklog-illustration";
+import { ProjectCard } from "@/components/project-card";
 import { personSchema, siteOrigin } from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
+
+const homepageProjectSlugs = new Set([
+  "servrr",
+  "staffstack",
+  "foleman-electricals",
+  "codetech-gadgets",
+]);
+const homepageProjects = flagships.filter((project) => homepageProjectSlugs.has(project.slug));
 
 export default function Home() {
   return (
@@ -64,87 +65,18 @@ export default function Home() {
             <Reveal className="sec-head">
               <span className="num">02</span>
               <h2>Selected work</h2>
-              <span className="count">{flagships.length} featured projects</span>
+              <span className="count">4 featured projects</span>
             </Reveal>
 
             <div className="project-gallery">
-              {flagships.map((f, i) => {
-                const caseLink = f.links.find((link) => link.href.startsWith("/work/"));
-                const destination = caseLink?.href ?? f.links[0]?.href;
-                return (
-                  <Reveal as="article" className={`project-card project-${f.slug} ${i === 0 || f.slug === "staffstack" ? "project-featured" : ""}`} key={f.slug}>
-                    <div className="project-stage">
-                      <div className="project-stage-heading">
-                        <div>{f.slug === "servrr" && <span className="product-ownership">My product / Built and operated end to end</span>}<h3>{f.title}</h3><p>{f.desc}</p></div>
-                        <span className="project-index">{String(i + 1).padStart(2, "0")} / {f.meta.type}</span>
-                      </div>
-                      <div className="project-screen">
-                        {f.video ? (
-                          <><div className="browser-chrome" aria-hidden="true"><i /><i /><i /><span>{f.title}</span></div><video autoPlay muted loop playsInline preload="metadata" poster={f.poster} src={f.video} /></>
-                        ) : f.image ? <><div className="browser-chrome" aria-hidden="true"><i /><i /><i /><span>{f.title}</span></div><img className="project-screenshot" src={f.image} alt={`${f.title} product preview`} loading="lazy" /></> : <div className="project-art"><StockLogIllustration /></div>}
-                      </div>
-                      {destination && <Link className="project-overlay" href={destination} aria-label={`Explore ${f.title}${caseLink ? " case study" : ""}`} {...(!caseLink ? { target: "_blank", rel: "noreferrer" } : {})} />}
-                    </div>
-                    {f.slug === "servrr" && <div className="product-depth">
-                      <div><span className="studio-kicker">Beyond the website</span><h4>Software for the restaurant floor.</h4><p>From a diner scanning a table code to staff managing an active session: the product coordinates a real service workflow.</p></div>
-                      <dl><div><dt>Product ownership</dt><dd>Direction, architecture, interface, code, and deployment.</dd></div><div><dt>System design</dt><dd>Permanent table identity, staff-controlled sessions, restaurant-specific menus and roles.</dd></div><div><dt>Live product</dt><dd>A shared SaaS deployment, subscription tiers, and email delivery.</dd></div></dl>
-                    </div>}
-                    {f.slug === "staffstack" && <div className="product-depth">
-                      <div><span className="studio-kicker">Beyond the public page</span><h4>The whole school's team, connected.</h4><p>Staff records, salary structures, payroll runs, and teaching assignments inform one another. StaffStack brings those workflows into one workspace.</p></div>
-                      <dl><div><dt>Payroll engine</dt><dd>Typed salary calculations, configurable deductions, bank exports, and payslip delivery.</dd></div><div><dt>School operations</dt><dd>Leave and attendance alongside subject assignments, with visibility into teaching coverage gaps.</dd></div><div><dt>Connected data</dt><dd>Organisation-based PostgreSQL records with Supabase authentication behind a React interface.</dd></div></dl>
-                    </div>}
-                    <div className="project-caption"><span>{f.meta.year} / {f.meta.type}</span><div>{f.links.map((link) => <Link key={link.href} href={link.href} {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}>{link.label}</Link>)}</div></div>
-                  </Reveal>
-                );
-              })}
+              {homepageProjects.map((project, index) => (
+                <ProjectCard project={project} index={index} key={project.slug} />
+              ))}
             </div>
 
-            <Reveal className="subhead">More product & engineering work</Reveal>
-            <div className="engineering-grid">
-              {engineeringProjects.map((project) => <Reveal as="article" className="engineering-card" key={project.title}>
-                <div className="engineering-label"><span>{project.category}</span><span>{project.status}</span></div>
-                <h3>{project.title}</h3><p>{project.desc}</p><p className="engineering-detail">{project.detail}</p>
-                <div className="engineering-stack">{project.stack.join(" / ")}</div>
-                <div className="engineering-links">{"href" in project && project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit site ↗</a>}<a href={project.source} target="_blank" rel="noreferrer">Explore code ↗</a></div>
-              </Reveal>)}
-            </div>
-            <Reveal className="subhead">Also shipped</Reveal>
-            {alsoShipped.map((p, i) => {
-              const delay = {
-                "--reveal-delay": `${(i % 4) * 60}ms`,
-              } as CSSProperties;
-              return (
-                <Reveal className="mini" key={p.title} style={delay}>
-                  <h3 className="display">
-                    {p.href ? (
-                      <a href={p.href} target="_blank" rel="noreferrer">
-                        {p.title} <span className="ext" aria-hidden="true">↗</span>
-                      </a>
-                    ) : p.title}
-                  </h3>
-                  <p>{p.desc}</p>
-                  {p.ghHref && (
-                    <a className="mini-code" href={p.ghHref} target="_blank" rel="noreferrer" aria-label={`${p.title} source code`}>
-                      Code ↗
-                    </a>
-                  )}
-                  <span className="yr">{p.year}</span>
-                </Reveal>
-              );
-            })}
-
-            <Reveal className="building">
-              <span className="dot" />
-              <span>
-                Currently building · <b>{site.building.name}</b>,{" "}
-                {site.building.desc}
-              </span>
-            </Reveal>
-            <Reveal className="work-cta">
-              <p>Have a product or engineering challenge in mind?</p>
-              <a href={`mailto:${site.email}?subject=Project%20or%20role%20inquiry`}>
-                Tell me about it <span aria-hidden="true">↗</span>
-              </a>
+            <Reveal className="all-projects-link">
+              <p>Explore the full range of product, frontend, and backend work.</p>
+              <Link href="/projects" className="btn btn-solid">View more projects <span aria-hidden="true">↗</span></Link>
             </Reveal>
           </section>
 
@@ -153,103 +85,10 @@ export default function Home() {
             <Reveal className="studio-bio"><p className="studio-kicker">Thoughtful interfaces. Reliable systems.</p><h2>I care about what happens<br />after the demo.</h2><p>{about.paragraphs[0]}</p><Link href="/about" className="text-link">More about me ↗</Link></Reveal>
           </section>
 
-          {/* ---------- 03 SKILLS ---------- */}
-          <section className="sec" id="skills">
-            <Reveal className="sec-head">
-              <span className="num">03</span>
-              <h2>{skillsIntro.title}</h2>
-              <span className="count">
-                {skills.reduce((n, g) => n + g.items.length, 0)}+ tools
-              </span>
-            </Reveal>
-            <div className="skills-list">
-              {skills.map((g, i) => (
-                <Reveal
-                  className="skill-row"
-                  key={g.label}
-                  style={
-                    { "--reveal-delay": `${(i % 4) * 60}ms` } as CSSProperties
-                  }
-                >
-                  <div className="skill-row-head">
-                    <span className="skill-index mono">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="display">{g.label}</h3>
-                  </div>
-                  <div className="skill-row-items">
-                    {g.items.map((item) => (
-                      <span className="skill-item" key={item}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </section>
-
-          {/* ---------- 04 EXPERIENCE ---------- */}
-          <section className="sec" id="experience">
-            <Reveal className="sec-head">
-              <span className="num">04</span>
-              <h2>{experienceIntro.title}</h2>
-              <span className="count">4+ years</span>
-            </Reveal>
-            <div className="exp-list">
-              {experience.map((role, i) => (
-                <Reveal
-                  key={role.company}
-                  className={`exp-item ${role.current ? "is-current" : ""}`}
-                  style={
-                    { "--reveal-delay": `${(i % 3) * 60}ms` } as CSSProperties
-                  }
-                >
-                  <span className="exp-dot" />
-                  <div className="exp-head">
-                    <span className="exp-period mono">{role.period}</span>
-                    {role.current && <span className="exp-badge">Current</span>}
-                  </div>
-                  <h3 className="display exp-role">
-                    {role.title}{" "}
-                    <span className="exp-at">@ {role.company}</span>
-                  </h3>
-                  <div className="exp-meta mono">
-                    {role.type
-                      ? `${role.location} · ${role.type}`
-                      : role.location}
-                  </div>
-                  <ul className="exp-bullets">
-                    {role.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                  {role.stack && (
-                    <div className="exp-stack">
-                      {role.stack.map((s) => (
-                        <span className="chip" key={s}>
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </Reveal>
-              ))}
-
-              <Reveal className="exp-item exp-education">
-                <span className="exp-dot exp-dot-edu" />
-                <span className="exp-period mono">{education.period}</span>
-                <h3 className="display exp-role">{education.degree}</h3>
-                <div className="exp-meta mono">{education.place}</div>
-              </Reveal>
-            </div>
-          </section>
-
-
-          {/* ---------- 05 NOTES ---------- */}
+          {/* ---------- 03 NOTES ---------- */}
           <section className="sec notes-sec" id="notes">
             <Reveal className="sec-head">
-              <span className="num">05</span>
+              <span className="num">03</span>
               <h2>{notesIntro.title}</h2>
               <span className="count">writing</span>
             </Reveal>
@@ -294,10 +133,10 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ---------- 06 TESTIMONIALS ---------- */}
+          {/* ---------- 04 TESTIMONIALS ---------- */}
           <section className="sec" id="testimonials">
             <Reveal className="sec-head">
-              <span className="num">06</span>
+              <span className="num">04</span>
               <h2>{testimonialsIntro.title}</h2>
               <span className="count">from collaborators</span>
             </Reveal>

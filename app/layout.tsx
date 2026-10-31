@@ -20,9 +20,9 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "700"],
 });
 
-const title = `${site.fullName} — Software Engineer`;
+const title = `${site.fullName} | Frontend & Software Engineer`;
 const description =
-  "Akorede Alao is a software engineer building web and mobile products, production APIs, and software for real business workflows.";
+  "Akorede Alao is a frontend and software engineer building web and mobile products with React, Next.js, and TypeScript.";
 
 export const metadata: Metadata = {
   ...(siteOrigin ? { metadataBase: new URL(siteOrigin), alternates: { canonical: "/" } } : {}),
@@ -31,16 +31,6 @@ export const metadata: Metadata = {
     template: `%s — ${site.fullName}`,
   },
   description,
-  keywords: [
-    "full-stack engineer",
-    "React developer",
-    "Next.js",
-    "TypeScript",
-    "React Native",
-    "SaaS builder",
-    "remote developer",
-    "Akorede Alao",
-  ],
   authors: [{ name: site.fullName }],
   creator: site.fullName,
   openGraph: {
@@ -49,7 +39,7 @@ export const metadata: Metadata = {
     siteName: `${site.fullName} — Portfolio`,
     title,
     description,
-    locale: "en_US",
+    locale: "en_NG",
   },
   twitter: {
     card: "summary_large_image",

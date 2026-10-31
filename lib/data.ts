@@ -8,7 +8,6 @@ export const site = {
   email: "akoredealao18@gmail.com",
   availability: "Open for work · freelance & full-time",
   nowShipping: { name: "Servrr", desc: "QR ordering for restaurants" },
-  building: { name: "StaffStack", desc: "HR & payroll for SMBs" },
   cvPath: "/cv/akorede-alao-cv.pdf", // put the PDF at public/cv/
   socials: [
     { label: "GitHub", href: "https://github.com/codetech18" },
@@ -18,9 +17,9 @@ export const site = {
 };
 
 export const hero = {
-  identity: "Akorede Alao, Software Engineer",
+  identity: "Akorede Alao · Frontend & Software Engineer",
   headline: ["I build software real businesses ", "run on."],
-  lede: "Four years building web and mobile products for teams and businesses, from production APIs to software used on the restaurant floor.",
+  lede: "4+ years building web and mobile products using React, Next.js, and TypeScript, from production APIs to software used on the restaurant floor.",
 };
 
 export const stats = [
@@ -31,7 +30,7 @@ export const stats = [
 
 export const about = {
   paragraphs: [
-    "I'm Akorede Alao, a full-stack software engineer with 4+ years of experience shipping production web and mobile software end to end. I'm currently a Software Engineer at Zashiron Org, full-time and remote, working across TypeScript, React, Next.js, and React Native, with LLM-powered features. Alongside that, I design, build, and run my own products — including Servrr, a live multi-tenant SaaS platform, and StockLog, inventory software built for phone dealers.",
+    "I'm Akorede Alao, a frontend and full-stack software engineer with 4+ years of experience shipping production web and mobile software end to end. I'm currently a Software Engineer at Zashiron Org, full-time and remote, working across TypeScript, React, Next.js, and React Native, with LLM-powered features. Alongside that, I design, build, and run my own products — including Servrr, a live multi-tenant SaaS platform, and StockLog, inventory software built for phone dealers.",
   ],
   pullquote: "Software should work for the people using it, beyond the demo.",
   paragraphsAfter: [

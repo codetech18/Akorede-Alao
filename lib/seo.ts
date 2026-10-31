@@ -26,10 +26,12 @@ export function pageMetadata(path: string, title: string, description: string) {
 export function personSchema() {
   return {
     "@type": "Person",
+    "@id": `${siteOrigin}/about#person`,
     name: site.fullName,
-    jobTitle: "Software Engineer",
-    url: siteOrigin,
+    jobTitle: "Frontend and Software Engineer",
+    url: absoluteUrl("/about"),
     image: absoluteUrl("/akorede-portrait-enhanced.png"),
+    knowsAbout: ["Frontend development", "React", "Next.js", "TypeScript", "React Native", "Web application development"],
     sameAs: site.socials.map((social) => social.href),
   };
 }
