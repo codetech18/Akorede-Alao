@@ -51,7 +51,7 @@ export default function ProjectsPage() {
                   <p className="engineering-detail">{project.detail}</p>
                   <div className="engineering-stack">{project.stack.join(" / ")}</div>
                   <div className="engineering-links">
-                    {"href" in project && project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit site ↗</a>}
+                    {"href" in project && project.href && <a className="project-live-link" href={project.href} target="_blank" rel="noreferrer">Visit site ↗</a>}
                     <a href={project.source} target="_blank" rel="noreferrer">Explore code ↗</a>
                   </div>
                 </Reveal>
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
                   <h3>{project.title}</h3>
                   <p>{project.desc}</p>
                   <div className="engineering-links">
-                    {project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit site ↗</a>}
+                    {project.href && <a className="project-live-link" href={project.href} target="_blank" rel="noreferrer">Visit site ↗</a>}
                     {project.ghHref && <a href={project.ghHref} target="_blank" rel="noreferrer">Explore code ↗</a>}
                   </div>
                 </Reveal>

@@ -89,7 +89,12 @@ export function ProjectCard({
         <span>{project.meta.year} / {project.meta.type}</span>
         <div>
           {project.links.map((link) => (
-            <Link key={link.href} href={link.href} {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={link.external && !link.href.includes("github.com") ? "project-live-link" : undefined}
+              {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
+            >
               {link.label}
             </Link>
           ))}
