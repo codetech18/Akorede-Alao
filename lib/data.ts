@@ -297,7 +297,7 @@ export const flagships: Flagship[] = [
       },
     ],
     links: [
-      { label: "Live site ↗", href: "https://foleman-eletricals1.vercel.app/", external: true },
+      { label: "View live preview ↗", href: "https://www.folemaneletricals.site/", external: true },
       { label: "Full case study →", href: "/work/foleman-electricals" },
     ],
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "GSAP", "Three.js"],

@@ -88,6 +88,9 @@ section[id] { scroll-margin-top: 35px; }
 .project-caption > div { display: flex; flex-wrap: wrap; justify-content: end; gap: 8px 14px; }
 .project-caption a { color: var(--ink); }
 .project-caption a:hover { color: var(--accent); }
+.project-foleman-electricals .project-caption a:first-child { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); border-radius: 4px; background: color-mix(in srgb, var(--accent) 10%, var(--paper)); color: var(--ink); font-size: 12px; font-weight: 600; }
+.project-foleman-electricals .project-caption a:first-child:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.project-foleman-electricals .project-caption a:first-child:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .studio-about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: center; padding: 90px 0; border-top: 1px solid var(--line); margin-top: 90px; }
 .studio-portrait { position: relative; max-width: 360px; }
 .studio-portrait img { width: 100%; height: 430px; object-fit: cover; object-position: center 28%; border-radius: 6px; }
